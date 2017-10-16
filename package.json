@@ -1,0 +1,37 @@
+{
+    "name": "webpack-vue-basic",
+    "version": "0.0.1",
+    "description": "A simple webpack setup for generating static websites.",
+    "scripts": {
+        "dev": "node_modules/webpack/bin/webpack.js --progress --hide-modules --config=webpack.config.js",
+        "watch": "node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=webpack.config.js"
+    },
+    "author": "Cameron Huntington",
+    "license": "MIT",
+    "devDependencies": {
+        "babel-core": "^6.26.0",
+        "babel-loader": "^7.1.2",
+        "babel-preset-env": "^1.6.0",
+        "css-loader": "^0.28.7",
+        "eslint": "^4.9.0",
+        "eslint-config-airbnb": "^16.1.0",
+        "eslint-plugin-import": "^2.7.0",
+        "extract-text-webpack-plugin": "^3.0.1",
+        "html-webpack-inline-source-plugin": "0.0.9",
+        "html-webpack-plugin": "^2.30.1",
+        "node-sass": "^4.5.3",
+        "sass-loader": "^6.0.6",
+        "style-loader": "^0.19.0",
+        "webpack": "^3.7.1"
+    },
+    "dependencies": {
+        "bootstrap": "^4.0.0-beta",
+        "jquery": "^3.2.1",
+        "popper.js": "^1.12.5",
+        "vue": "^2.5.2"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/chuntington/webpack-boilerplate.git"
+    }
+}
