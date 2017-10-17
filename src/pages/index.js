@@ -1,3 +1,4 @@
+import '../scss/global.scss';
 import '../scss/index.scss';
 
 import 'bootstrap';

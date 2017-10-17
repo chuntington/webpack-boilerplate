@@ -6,11 +6,24 @@ const path = require('path');
 
 // Todo: Linting, Piece extraction for MPA
 
+const minifyHtml = {
+    collapseWhitespace: true,
+    removeComments: true,
+    removeEmptyAttributes: true,
+    removeOptionalTags: true,
+    removeRedundantAttributes: true,
+    removeScriptTypeAttributes: true,
+    removeStyleLinkTypeAttributes: true
+};
+
 const config = {
-    entry: './src/js/index.js',
+    entry: {
+        index: './src/pages/index.js'
+    },
     output: {
-        filename: 'index.js',
-        path: path.resolve(__dirname, 'dist')
+        filename: 'js/[name].js',
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/'
     },
     module: {
         rules: [
@@ -26,7 +39,10 @@ const config = {
             },
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract('css-loader!sass-loader')
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader', 'sass-loader']
+                })
             }
         ]
     },
@@ -39,26 +55,24 @@ const config = {
             'window.Vue': 'vue',
             Popper: 'popper.js'
         }),
+        new ExtractTextPlugin({
+            filename: 'css/[name].css',
+            allChunks: true
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'common',
+            filename: 'js/common.js'
+        }),
         new webpack.optimize.UglifyJsPlugin(),
-        new ExtractTextPlugin('css/index.css', { allChunks: true }),
-        new HtmlWebpackPlugin(
-            {
-                template: './src/index.html',
-                favicon: './src/favicon.ico',
-                // Might be bad practice to inline css because it's uncacheable, but it's an option
-                inlineSource: '.js$',
-                minify: {
-                    collapseWhitespace: true,
-                    removeComments: true,
-                    removeEmptyAttributes: true,
-                    removeOptionalTags: true,
-                    removeRedundantAttributes: true,
-                    removeScriptTypeAttributes: true,
-                    removeStyleLinkTypeAttributes: true
-                }
-            }
-        ),
-        new HtmlWebpackInlineSourcePlugin()
+        new HtmlWebpackInlineSourcePlugin(),
+        new HtmlWebpackPlugin({
+            inject: true,
+            chunks: ['common', 'index'],
+            filename: 'index.html',
+            template: './src/pages/index.html',
+            inlineSource: 'index.(js|css)$',
+            minify: minifyHtml
+        })
     ],
     resolve: {
         alias: {
@@ -67,5 +81,26 @@ const config = {
         }
     }
 };
+
+const pages = [{
+    name: 'about',
+    filename: 'about',
+    entry: 'about/index.js',
+    template: 'about/index.html'
+}];
+
+pages.forEach((page) => {
+    config.entry[page.name] = './src/pages/' + page.entry;
+    config.plugins.push(
+        new HtmlWebpackPlugin({
+            inject: true,
+            chunks: ['common', page.name],
+            filename: page.filename + '/index.html',
+            template: './src/pages/' + page.template,
+            inlineSource: page.name + '.(js|css)$',
+            minify: minifyHtml
+        })
+    );
+});
 
 module.exports = config;
