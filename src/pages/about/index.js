@@ -1,6 +1,4 @@
 import '../../scss/global.scss';
 import '../../scss/about.scss';
 
-import 'bootstrap';
-
-console.log('Hello from the window of the About page!');
+console.log('Hello from the depths of the About page! jQuery is around...', $);

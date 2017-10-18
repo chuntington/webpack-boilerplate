@@ -1,12 +1,15 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
+const glob = require('glob');
 const webpack = require('webpack');
 const path = require('path');
 
-// Todo: Linting, Piece extraction for MPA
+const pages = glob.sync('./src/pages/**/');
 
-const minifyHtml = {
+// Todo: Linting
+
+const minifyHtmlOptions = {
     collapseWhitespace: true,
     removeComments: true,
     removeEmptyAttributes: true,
@@ -32,9 +35,7 @@ const config = {
                 exclude: /(node_modules|bower_components)/,
                 use: {
                     loader: 'babel-loader',
-                    // options: {
-                    //     presets: ['env']
-                    // }
+                    // options: { presets: ['env'] }
                 }
             },
             {
@@ -59,20 +60,12 @@ const config = {
             filename: 'css/[name].css',
             allChunks: true
         }),
+        new webpack.optimize.UglifyJsPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common',
-            filename: 'js/common.js'
+            minChunks: (m) => /node_modules/.test(m.context)
         }),
-        new webpack.optimize.UglifyJsPlugin(),
         new HtmlWebpackInlineSourcePlugin(),
-        new HtmlWebpackPlugin({
-            inject: true,
-            chunks: ['common', 'index'],
-            filename: 'index.html',
-            template: './src/pages/index.html',
-            inlineSource: 'index.(js|css)$',
-            minify: minifyHtml
-        })
     ],
     resolve: {
         alias: {
@@ -82,25 +75,25 @@ const config = {
     }
 };
 
-const pages = [{
-    name: 'about',
-    filename: 'about',
-    entry: 'about/index.js',
-    template: 'about/index.html'
-}];
+pages.forEach((match) => {
+    let filename = match.substring('./src/pages/'.length);
+    let name = '';
 
-pages.forEach((page) => {
-    config.entry[page.name] = './src/pages/' + page.entry;
-    config.plugins.push(
-        new HtmlWebpackPlugin({
-            inject: true,
-            chunks: ['common', page.name],
-            filename: page.filename + '/index.html',
-            template: './src/pages/' + page.template,
-            inlineSource: page.name + '.(js|css)$',
-            minify: minifyHtml
-        })
-    );
+    if (match !== './src/pages/') {
+        name = filename.substring(0, filename.length - 1).replace(/\//g, '.');
+    } else {
+        name = 'index';
+    }
+
+    config.entry[name] = match + 'index.js';
+    config.plugins.push(new HtmlWebpackPlugin({
+        chunks: ['common', name],
+        filename: filename + 'index.html',
+        inject: true,
+        inlineSource: name + '.(js|css)$',
+        minify: minifyHtmlOptions,
+        template: './src/pages/' + filename + 'index.html'
+    }));
 });
 
 module.exports = config;
