@@ -1,4 +1,3 @@
-import '../../assets/scss/global.scss';
 import '../../assets/scss/contact.scss';
 
 import Heading from '../../assets/js/components/Heading.vue';
@@ -7,7 +6,7 @@ new Vue({
 	components: { Heading },
 	el: '#app',
 	data: {
-		title: 'Contact'
+		title: 'Contact - Green'
 	},
 	template: `<heading :text="title"></heading>`,
 	mounted() {

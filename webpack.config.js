@@ -6,132 +6,200 @@ const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
 
-const pages = glob.sync('./src/pages/**/');
+// Todo: Linting, better CSS extraction
 
-// Todo: Linting
+class Configurator {
+	constructor(opts = {}) {
+		this.opts = opts;
+		this.config = this.opts.baseConfig || {};
 
-const config = {
-	entry: {},
-	output: {
-		filename: 'js/[name].js',
-		path: path.resolve(__dirname, 'dist'),
-		publicPath: '/'
-	},
-	module: {
-		rules: [
-			{
-				test: /\.js$/,
-				exclude: /(node_modules|bower_components)/,
-				use: {
-					loader: 'babel-loader',
-					// options: { presets: ['env'] }
-				}
-			},
-			{
-				test: /\.scss$/,
-				use: ExtractTextPlugin.extract({
-					fallback: 'style-loader',
-					use: ['css-loader', 'sass-loader']
-				})
-			}, {
-				test: /\.ejs$/,
-				use: {
-					loader: 'ejs-compiled-loader'
-				}
-			}, {
-				test: /\.vue$/,
-				use: {
-					loader: 'vue-loader'
-				}
-			}
-		]
-	},
-	plugins: [
-		new webpack.ProvidePlugin({
-			$: 'jquery',
-			jQuery: 'jquery',
-			'window.jQuery': 'jquery',
-			Vue: 'vue',
-			'window.Vue': 'vue',
-			Popper: 'popper.js',
-			_: 'underscore'
-		}),
-		new webpack.optimize.CommonsChunkPlugin({
-			name: 'common',
-			minChunks: 2
-		}),
-		new ExtractTextPlugin({
-			filename: 'css/[name].[hash].css',
-			allChunks: true
-		}),
-		new webpack.optimize.UglifyJsPlugin(),
-		new HtmlWebpackInlineSourcePlugin()
-	],
-	resolve: {
-		alias: {
-			// Change default to version with template interpolation
-			vue: 'vue/dist/vue.js'
+		if (this.opts.autoConfigure) {
+			this.configure();
 		}
 	}
-};
 
-const minifyHtmlOptions = {
-	collapseWhitespace: true,
-	removeComments: true,
-	removeEmptyAttributes: true,
-	removeOptionalTags: true,
-	removeRedundantAttributes: true,
-	removeScriptTypeAttributes: true,
-	removeStyleLinkTypeAttributes: true
-};
-
-pages.forEach((match) => {
-	let filename = match.substring('./src/pages/'.length);
-	let rootname = filename.split('/')[0];
-	let template = './src/pages/' + filename + 'index.ejs';
-	let name = '';
-
-	if (!fs.existsSync(template)) {
-		template = './src/layouts/master.ejs'
+	configure() {
+		this.setPages();
+		this.setPlugins();
+		this.setEntries();
 	}
 
-	if (match !== './src/pages/') {
-		name = filename.substring(0, filename.length - 1).replace(/\//g, '.');
-	} else {
-		name = 'index';
+	getHtmlOptions(page) {
+		const filename = this.getFilename(page);
+		const rootname = this.getRootname(page);
+		const template = this.getTemplate(page);
+		const name = this.getName(page);
+		const title = this.getTitle(page);
+
+		return { filename, rootname, name, template, title };
 	}
 
-	let titleTerms = name.split('.');
-	let title = titleTerms.reduce((sum, value, index) => {
-		if (!index) {
-			return sum += value.charAt(0).toUpperCase() + value.slice(1) + ' - ';
+	getFilename(page) {
+		return page.substring(this.opts.source.length);
+	}
+
+	getName(page) {
+		let name = '';
+
+		if (page !== this.opts.source) {
+			let filename = this.getFilename(page);
+			name = filename.substring(0, filename.length - 1).replace(/\//g, '.');
+		} else {
+			name = 'index';
 		}
-		return sum += value.charAt(0).toUpperCase() + value.slice(1);
-	}, '');
 
-	config.entry[name] = match + 'index.js';
-	config.plugins.push(new HtmlWebpackPlugin({
-		appMountId: 'app',
-		// need `name` for embedding js
-		// need `rootname` for embedding css - except it embeds root js, too
-		chunks: ['common', name, rootname],
-		chunksSortMode: 'dependency',
-		favicon: './src/favicon.ico',
-		filename: filename + 'index.html',
-		inject: true,
-		// inlineSource: name + '.(css|js)$',
-		minify: minifyHtmlOptions,
-		mobile: true,
-		options: {
-			googleAnalytics: {
-				pageViewOnLoad: true,
-				trackingId: 1
-			}
+		return name;
+	}
+
+	getRootname(page) {
+		const filename = this.getFilename(page);
+
+		return filename.split('/')[0];
+	}
+
+	getTemplate(page) {
+		const filename = this.getFilename(page);
+		let template = this.opts.source + filename + 'index.ejs';
+
+		if (!fs.existsSync(template)) {
+			template = './src/layouts/master.ejs'
+		}
+
+		return template;
+	}
+
+	getTitle(page) {
+		const name = this.getName(page);
+
+		return name.split('.').reduce((sum, value, index) => {
+			return sum += value.charAt(0).toUpperCase() + value.slice(1) + ((!index) ? ' - ' : '');
+		}, '');
+	}
+
+	setEntries() {
+		this.pages.forEach((page) => {
+			const name = this.getName(page);
+			this.config.entry[name] = page + 'index.js';
+		});
+
+		return this;
+	}
+
+	setPages() {
+		this.pages = glob.sync(this.opts.source + '**/');
+
+		return this;
+	}
+
+	setPlugins() {
+		const plugins = this.pages.map((page) => {
+			const pageOptions = this.getHtmlOptions(page);
+
+			return new HtmlWebpackPlugin({
+				appMountId: 'app',
+				// I'm not entirely convinced auto-injecting assets is realistic
+				chunks: ['common', pageOptions.name],
+				favicon: this.opts.source + 'favicon.ico',
+				filename: pageOptions.filename + 'index.html',
+				googleAnalytics: this.opts.googleAnalytics || null,
+				inject: true,
+				// inlineSource: pageOptions.name + '.(css|js)$',
+				minify: this.opts.htmlMinifyOptions || {},
+				mobile: true,
+				template: pageOptions.template,
+				title: pageOptions.title,
+				unsupportedBrowser: true
+			})
+		});
+
+		plugins.forEach((plugin) => {
+			this.config.plugins.push(plugin);
+		});
+
+		return this;
+	}
+}
+
+const configurator = new Configurator({
+	autoConfigure: true,
+	googleAnalytics: {
+		pageViewOnLoad: true,
+		trackingId: 1
+	},
+	source: './src/pages/',
+	htmlMinifyOptions: {
+		collapseWhitespace: true,
+		removeComments: true,
+		removeEmptyAttributes: true,
+		removeOptionalTags: true,
+		removeRedundantAttributes: true,
+		removeScriptTypeAttributes: true,
+		removeStyleLinkTypeAttributes: true
+	},
+	baseConfig: {
+		entry: {},
+		output: {
+			filename: 'js/[name].js',
+			path: path.resolve(__dirname, 'dist'),
+			publicPath: '/'
 		},
-		template: template,
-		title: title,
-		unsupportedBrowser: true
-	}));
+		module: {
+			rules: [
+				{
+					test: /\.js$/,
+					exclude: /(node_modules|bower_components)/,
+					use: {
+						loader: 'babel-loader',
+						// options: { presets: ['env'] }
+					}
+				}, {
+					test: /\.css$/,
+					use: ['css-loader']
+				}, {
+					test: /\.scss$/,
+					use: ExtractTextPlugin.extract({
+						fallback: 'style-loader',
+						use: ['css-loader', 'sass-loader']
+					})
+				}, {
+					test: /\.ejs$/,
+					use: ['ejs-compiled-loader']
+				}, {
+					test: /\.vue$/,
+					use: ['vue-loader']
+				}
+			]
+		},
+		plugins: [
+			new webpack.ProvidePlugin({
+				$: 'jquery',
+				jQuery: 'jquery',
+				'window.jQuery': 'jquery',
+				Vue: 'vue',
+				'window.Vue': 'vue',
+				Popper: 'popper.js',
+				_: 'underscore'
+			}),
+			new webpack.optimize.CommonsChunkPlugin({
+				name: 'common',
+				minChunks: 2
+			}),
+			new ExtractTextPlugin({
+				filename: 'css/[name].css',
+				allChunks: true
+			}),
+			new webpack.optimize.UglifyJsPlugin(),
+			// new HtmlWebpackInlineSourcePlugin()
+		],
+		resolve: {
+			alias: {
+				// Change default to version with template interpolation
+				vue: 'vue/dist/vue.js'
+			}
+		}
+	}
 });
 
-module.exports = config;
+fs.writeFileSync('dist/generated-config.js', JSON.stringify(configurator.config, null, 2), 'utf-8');
+
+module.exports = configurator.config;
