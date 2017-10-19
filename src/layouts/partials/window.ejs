@@ -1,0 +1,7 @@
+<% if (htmlWebpackPlugin.options.window) { %>
+	<script>
+		<% for (var varName in htmlWebpackPlugin.options.window) { %>
+			window['<%=varName%>'] = <%= JSON.stringify(htmlWebpackPlugin.options.window[varName]) %>;
+		<% } %>
+	</script>
+<% } %>

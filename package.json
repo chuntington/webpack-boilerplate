@@ -13,6 +13,7 @@
 		"babel-loader": "^7.1.2",
 		"babel-preset-env": "^1.6.1",
 		"css-loader": "^0.28.7",
+		"ejs-compiled-loader": "^1.1.0",
 		"eslint": "^4.9.0",
 		"eslint-config-airbnb": "^16.1.0",
 		"eslint-plugin-import": "^2.7.0",
@@ -21,14 +22,19 @@
 		"html-webpack-inline-source-plugin": "0.0.9",
 		"html-webpack-plugin": "^2.30.1",
 		"node-sass": "^4.5.3",
+		"raw-loader": "^0.5.1",
 		"sass-loader": "^6.0.6",
 		"style-loader": "^0.19.0",
+		"vue-loader": "^13.3.0",
+		"vue-template-compiler": "^2.5.2",
 		"webpack": "^3.8.1"
 	},
 	"dependencies": {
+		"axios": "^0.16.2",
 		"bootstrap": "^4.0.0-beta",
 		"jquery": "^3.2.1",
 		"popper.js": "^1.12.5",
+		"underscore": "^1.8.3",
 		"vue": "^2.5.2"
 	},
 	"repository": {

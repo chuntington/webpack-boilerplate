@@ -1,12 +1,16 @@
-import '../../scss/global.scss';
-import '../../scss/contact.scss';
+import '../../assets/scss/global.scss';
+import '../../assets/scss/contact.scss';
 
-const app = new Vue({
+import Heading from '../../assets/js/components/Heading.vue';
+
+new Vue({
+	components: { Heading },
 	el: '#app',
 	data: {
-		title: 'Webpack + Vue Basic'
+		title: 'Contact'
 	},
+	template: `<heading :text="title"></heading>`,
 	mounted() {
-		console.log('Hello from the crevasses of the Contact page! Vue is alive in here as well.');
+		console.log('Hello from Vue inside contact.js! jQuery is available.', $);
 	}
 });

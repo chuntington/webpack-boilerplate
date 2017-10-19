@@ -4,20 +4,11 @@ const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin
 const glob = require('glob');
 const webpack = require('webpack');
 const path = require('path');
+const fs = require('fs');
 
 const pages = glob.sync('./src/pages/**/');
 
 // Todo: Linting
-
-const minifyHtmlOptions = {
-	collapseWhitespace: true,
-	removeComments: true,
-	removeEmptyAttributes: true,
-	removeOptionalTags: true,
-	removeRedundantAttributes: true,
-	removeScriptTypeAttributes: true,
-	removeStyleLinkTypeAttributes: true
-};
 
 const config = {
 	entry: {},
@@ -42,6 +33,16 @@ const config = {
 					fallback: 'style-loader',
 					use: ['css-loader', 'sass-loader']
 				})
+			}, {
+				test: /\.ejs$/,
+				use: {
+					loader: 'ejs-compiled-loader'
+				}
+			}, {
+				test: /\.vue$/,
+				use: {
+					loader: 'vue-loader'
+				}
 			}
 		]
 	},
@@ -52,18 +53,19 @@ const config = {
 			'window.jQuery': 'jquery',
 			Vue: 'vue',
 			'window.Vue': 'vue',
-			Popper: 'popper.js'
+			Popper: 'popper.js',
+			_: 'underscore'
 		}),
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'common',
 			minChunks: 2
 		}),
 		new ExtractTextPlugin({
-			filename: 'css/[name].css',
+			filename: 'css/[name].[hash].css',
 			allChunks: true
 		}),
-		// new webpack.optimize.UglifyJsPlugin(),
-		// new HtmlWebpackInlineSourcePlugin()
+		new webpack.optimize.UglifyJsPlugin(),
+		new HtmlWebpackInlineSourcePlugin()
 	],
 	resolve: {
 		alias: {
@@ -73,9 +75,25 @@ const config = {
 	}
 };
 
+const minifyHtmlOptions = {
+	collapseWhitespace: true,
+	removeComments: true,
+	removeEmptyAttributes: true,
+	removeOptionalTags: true,
+	removeRedundantAttributes: true,
+	removeScriptTypeAttributes: true,
+	removeStyleLinkTypeAttributes: true
+};
+
 pages.forEach((match) => {
 	let filename = match.substring('./src/pages/'.length);
+	let rootname = filename.split('/')[0];
+	let template = './src/pages/' + filename + 'index.ejs';
 	let name = '';
+
+	if (!fs.existsSync(template)) {
+		template = './src/layouts/master.ejs'
+	}
 
 	if (match !== './src/pages/') {
 		name = filename.substring(0, filename.length - 1).replace(/\//g, '.');
@@ -83,14 +101,36 @@ pages.forEach((match) => {
 		name = 'index';
 	}
 
+	let titleTerms = name.split('.');
+	let title = titleTerms.reduce((sum, value, index) => {
+		if (!index) {
+			return sum += value.charAt(0).toUpperCase() + value.slice(1) + ' - ';
+		}
+		return sum += value.charAt(0).toUpperCase() + value.slice(1);
+	}, '');
+
 	config.entry[name] = match + 'index.js';
 	config.plugins.push(new HtmlWebpackPlugin({
-		chunks: ['common', name],
+		appMountId: 'app',
+		// need `name` for embedding js
+		// need `rootname` for embedding css - except it embeds root js, too
+		chunks: ['common', name, rootname],
+		chunksSortMode: 'dependency',
+		favicon: './src/favicon.ico',
 		filename: filename + 'index.html',
 		inject: true,
-		// inlineSource: name + '.(js)$',
+		// inlineSource: name + '.(css|js)$',
 		minify: minifyHtmlOptions,
-		template: './src/pages/' + filename + 'index.html'
+		mobile: true,
+		options: {
+			googleAnalytics: {
+				pageViewOnLoad: true,
+				trackingId: 1
+			}
+		},
+		template: template,
+		title: title,
+		unsupportedBrowser: true
 	}));
 });
 

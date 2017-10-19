@@ -8,3 +8,6 @@ Build for development
 
 Build for production
 `npm run prod`
+
+### Notes
+Issues injecting child directory specific assets without root assets coming with.
