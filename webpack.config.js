@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
@@ -6,12 +8,13 @@ const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
 
-// Todo: Linting, better CSS extraction
+// Todo: Linting, better CSS extraction, extract env pieces (analytics code, source dir)
 
 class Configurator {
 	constructor(opts = {}) {
 		this.opts = opts;
 		this.config = this.opts.baseConfig || {};
+		this.pages = glob.sync(this.opts.source + '**/');
 
 		if (this.opts.autoConfigure) {
 			this.configure();
@@ -19,7 +22,6 @@ class Configurator {
 	}
 
 	configure() {
-		this.setPages();
 		this.setPlugins();
 		this.setEntries();
 	}
@@ -85,12 +87,6 @@ class Configurator {
 		return this;
 	}
 
-	setPages() {
-		this.pages = glob.sync(this.opts.source + '**/');
-
-		return this;
-	}
-
 	setPlugins() {
 		const plugins = this.pages.map((page) => {
 			const pageOptions = this.getHtmlOptions(page);
@@ -124,7 +120,7 @@ const configurator = new Configurator({
 	autoConfigure: true,
 	googleAnalytics: {
 		pageViewOnLoad: true,
-		trackingId: 1
+		trackingId: process.env.TRACKING_CODE
 	},
 	source: './src/pages/',
 	htmlMinifyOptions: {

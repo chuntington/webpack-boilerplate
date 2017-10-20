@@ -13,6 +13,7 @@
 		"babel-loader": "^7.1.2",
 		"babel-preset-env": "^1.6.1",
 		"css-loader": "^0.28.7",
+		"dotenv": "^4.0.0",
 		"ejs-compiled-loader": "^1.1.0",
 		"eslint": "^4.9.0",
 		"eslint-config-airbnb": "^16.1.0",
