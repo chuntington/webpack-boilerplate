@@ -1,14 +1,16 @@
-require('dotenv').config()
+require('dotenv').config();
 
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 const glob = require('glob');
 const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
 
-// Todo: Linting, better CSS extraction, extract env pieces (analytics code, source dir)
+// Todo: Linting
 
 class Configurator {
 	constructor(opts = {}) {
@@ -21,9 +23,15 @@ class Configurator {
 		}
 	}
 
+	addPlugin(plugin) {
+		this.config.plugins.push(plugin);
+
+		return this;
+	}
+
 	configure() {
-		this.setPlugins();
-		this.setEntries();
+		this.setEntries()
+			.setPlugins();
 	}
 
 	getHtmlOptions(page) {
@@ -81,6 +89,7 @@ class Configurator {
 	setEntries() {
 		this.pages.forEach((page) => {
 			const name = this.getName(page);
+
 			this.config.entry[name] = page + 'index.js';
 		});
 
@@ -91,16 +100,17 @@ class Configurator {
 		const plugins = this.pages.map((page) => {
 			const pageOptions = this.getHtmlOptions(page);
 
+			// Note: I'm not entirely convinced auto-injecting assets is realistic
 			return new HtmlWebpackPlugin({
 				appMountId: 'app',
-				// I'm not entirely convinced auto-injecting assets is realistic
 				chunks: ['common', pageOptions.name],
+				chunksSortMode: 'dependency',
 				favicon: this.opts.source + 'favicon.ico',
 				filename: pageOptions.filename + 'index.html',
 				googleAnalytics: this.opts.googleAnalytics || null,
 				inject: true,
-				// inlineSource: pageOptions.name + '.(css|js)$',
-				minify: this.opts.htmlMinifyOptions || {},
+				inlineSource: (this.opts.inlineSource) ? pageOptions.name + '.(css|js)$' : false,
+				minify: this.opts.htmlMinify,
 				mobile: true,
 				template: pageOptions.template,
 				title: pageOptions.title,
@@ -108,9 +118,27 @@ class Configurator {
 			})
 		});
 
-		plugins.forEach((plugin) => {
-			this.config.plugins.push(plugin);
-		});
+		plugins.forEach((plugin) => this.addPlugin(plugin));
+
+		if (this.opts.uglify) {
+			this.addPlugin(new webpack.optimize.UglifyJsPlugin());
+		}
+
+		if (this.opts.inlineSource) {
+			this.addPlugin(new HtmlWebpackInlineSourcePlugin());
+		}
+
+		if (this.opts.gzip) {
+			this.addPlugin(
+				new CompressionWebpackPlugin({
+					asset: '[path].gz[query]',
+					algorithm: 'gzip',
+					test: new RegExp('\\.(js|css)$'),
+					threshold: 10240,
+					minRatio: 0.8
+				})
+			)
+		}
 
 		return this;
 	}
@@ -118,20 +146,6 @@ class Configurator {
 
 const configurator = new Configurator({
 	autoConfigure: true,
-	googleAnalytics: {
-		pageViewOnLoad: true,
-		trackingId: process.env.TRACKING_CODE
-	},
-	source: './src/pages/',
-	htmlMinifyOptions: {
-		collapseWhitespace: true,
-		removeComments: true,
-		removeEmptyAttributes: true,
-		removeOptionalTags: true,
-		removeRedundantAttributes: true,
-		removeScriptTypeAttributes: true,
-		removeStyleLinkTypeAttributes: true
-	},
 	baseConfig: {
 		entry: {},
 		output: {
@@ -184,8 +198,7 @@ const configurator = new Configurator({
 				filename: 'css/[name].css',
 				allChunks: true
 			}),
-			new webpack.optimize.UglifyJsPlugin(),
-			// new HtmlWebpackInlineSourcePlugin()
+			new OptimizeCSSPlugin()
 		],
 		resolve: {
 			alias: {
@@ -193,9 +206,25 @@ const configurator = new Configurator({
 				vue: 'vue/dist/vue.js'
 			}
 		}
-	}
+	},
+	googleAnalytics: {
+		pageViewOnLoad: true,
+		trackingId: process.env.GA_TRACKING_CODE
+	},
+	gzip: process.env.GZIP == 'true',
+	htmlMinify: {
+		collapseWhitespace: process.env.COLLAPSE_WHITE_SPACE == 'true',
+		removeComments: process.env.REMOVE_COMMENTS == 'true',
+		removeEmptyAttributes: process.env.REMOVE_EMPTY_ATTRS == 'true',
+		removeOptionalTags: true,
+		removeRedundantAttributes: true,
+		removeScriptTypeAttributes: true,
+		removeStyleLinkTypeAttributes: true
+	},
+	inlineSource: process.env.INLINE_SOURCE == 'true',
+	minifyHtml: process.env.MINIFY_HTML == 'true',
+	source: process.env.PAGE_SOURCE || './src/pages/',
+	uglify: process.env.UGLIFY_JS == 'true'
 });
-
-fs.writeFileSync('dist/generated-config.js', JSON.stringify(configurator.config, null, 2), 'utf-8');
 
 module.exports = configurator.config;
