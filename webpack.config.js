@@ -10,8 +10,6 @@ const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
 
-// Todo: Linting
-
 class Configurator {
 	constructor(opts = {}) {
 		this.opts = opts;
@@ -25,6 +23,12 @@ class Configurator {
 
 	addPlugin(plugin) {
 		this.config.plugins.push(plugin);
+
+		return this;
+	}
+
+	addRule(rule) {
+		this.config.module.rules.push(rule);
 
 		return this;
 	}
@@ -122,6 +126,15 @@ class Configurator {
 
 		if (this.opts.uglify) {
 			this.addPlugin(new webpack.optimize.UglifyJsPlugin());
+		}
+
+		if (this.opts.lint) {
+			this.addRule({
+				enforce: 'pre',
+				test: /\.vue$/,
+				loader: 'eslint-loader',
+				exclude: /(node_modules|bower_components)/
+			});
 		}
 
 		if (this.opts.inlineSource) {
@@ -222,6 +235,7 @@ const configurator = new Configurator({
 		removeStyleLinkTypeAttributes: true
 	},
 	inlineSource: process.env.INLINE_SOURCE == 'true',
+	lint: process.env.LINT_JS == 'true',
 	minifyHtml: process.env.MINIFY_HTML == 'true',
 	source: process.env.PAGE_SOURCE || './src/pages/',
 	uglify: process.env.UGLIFY_JS == 'true'

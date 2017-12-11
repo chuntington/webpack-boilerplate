@@ -1,10 +1,13 @@
-Ships with Bootstrap 4 Beta (+ popper), Vue 2.5 and jQuery.
+Prepackaged with Bootstrap (+ popper), Vue, jQuery, Axios, DateFns and Underscore.
 
 Install dependencies
 `npm install`
 
 Build for development
 `npm run dev`
+
+Lint
+`npm run lint`
 
 Build for production
 `npm run prod`
