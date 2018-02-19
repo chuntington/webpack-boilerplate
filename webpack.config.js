@@ -39,8 +39,8 @@ class Configurator {
 	}
 
 	getHtmlOptions(page) {
-		const filename = this.getFilename(page);
-		const rootname = this.getRootname(page);
+		const filename = this.getFileName(page);
+		const rootname = this.getRootName(page);
 		const template = this.getTemplate(page);
 		const name = this.getName(page);
 		const title = this.getTitle(page);
@@ -48,7 +48,7 @@ class Configurator {
 		return { filename, rootname, name, template, title };
 	}
 
-	getFilename(page) {
+	getFileName(page) {
 		return page.substring(this.opts.source.length);
 	}
 
@@ -56,7 +56,7 @@ class Configurator {
 		let name = '';
 
 		if (page !== this.opts.source) {
-			let filename = this.getFilename(page);
+			let filename = this.getFileName(page);
 			name = filename.substring(0, filename.length - 1).replace(/\//g, '.');
 		} else {
 			name = 'index';
@@ -65,14 +65,14 @@ class Configurator {
 		return name;
 	}
 
-	getRootname(page) {
-		const filename = this.getFilename(page);
+	getRootName(page) {
+		const filename = this.getFileName(page);
 
 		return filename.split('/')[0];
 	}
 
 	getTemplate(page) {
-		const filename = this.getFilename(page);
+		const filename = this.getFileName(page);
 		let template = this.opts.source + filename + 'index.ejs';
 
 		if (!fs.existsSync(template)) {
@@ -155,7 +155,7 @@ class Configurator {
 
 		return this;
 	}
-}
+};
 
 const configurator = new Configurator({
 	autoConfigure: true,
@@ -173,7 +173,7 @@ const configurator = new Configurator({
 					exclude: /(node_modules|bower_components)/,
 					use: {
 						loader: 'babel-loader',
-						// options: { presets: ['env'] }
+						options: { presets: ['env'] }
 					}
 				}, {
 					test: /\.css$/,
