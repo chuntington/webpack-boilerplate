@@ -1,14 +1,16 @@
 require('dotenv').config();
 
+const fs = require('fs');
+const glob = require('glob');
+const path = require('path');
+const webpack = require('webpack');
+
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
-const glob = require('glob');
-const webpack = require('webpack');
-const path = require('path');
-const fs = require('fs');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 class Configurator {
 	constructor(opts = {}) {
@@ -125,7 +127,7 @@ class Configurator {
 		plugins.forEach((plugin) => this.addPlugin(plugin));
 
 		if (this.opts.uglify) {
-			this.addPlugin(new webpack.optimize.UglifyJsPlugin());
+			this.addPlugin(new UglifyJsPlugin());
 		}
 
 		if (this.opts.lint) {
