@@ -3,14 +3,11 @@ Prepackaged with Bootstrap (+ popper), Vue, jQuery, Axios, DateFns and Underscor
 Install dependencies
 `npm install`
 
-Build for development
-`npm run dev`
-
 Lint
 `npm run lint`
 
-Build for production
-`npm run prod`
+Build
+`npm run build`
 
 ### Notes
 Issues injecting child directory specific assets without root assets coming with.
