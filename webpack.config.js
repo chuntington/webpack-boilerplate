@@ -11,6 +11,7 @@ const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 class Configurator {
 	constructor(opts = {}) {
@@ -213,7 +214,8 @@ const configurator = new Configurator({
 				filename: 'css/[name].css',
 				allChunks: true
 			}),
-			new OptimizeCSSPlugin()
+			new OptimizeCSSPlugin(),
+			new VueLoaderPlugin()
 		],
 		resolve: {
 			alias: {
