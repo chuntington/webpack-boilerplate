@@ -1,9 +1,10 @@
 {
-    "presets": [
-        ["env", {
-            "targets": {
-                "browsers": ["last 2 versions", "safari >= 7"]
-            }
-        }]
-    ]
+	"presets": [
+		[
+			"@babel/preset-env", {
+				"useBuiltIns": "entry",
+				"targets": "> 0.25%, not dead"
+			}
+		]
+	]
 }
