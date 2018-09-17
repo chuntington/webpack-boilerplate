@@ -1,6 +1,6 @@
 {
 	"name": "webpack-boilerplate",
-	"version": "0.1.4",
+	"version": "0.1.5",
 	"description": "A simple webpack setup for generating static websites.",
 	"scripts": {
 		"build": "node_modules/webpack/bin/webpack.js --progress --hide-modules --config=webpack.config.js",
