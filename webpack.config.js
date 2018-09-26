@@ -188,6 +188,15 @@ const configurator = new Configurator({
 						use: ['css-loader', 'sass-loader']
 					})
 				}, {
+					test: /\.(ttf|eot|otf|woff|woff2)$/,
+					use: {
+						loader: 'file-loader',
+						options: {
+							name: '[name].[ext]',
+							outputPath: 'fonts/'
+						}
+					}
+				}, {
 					test: /\.ejs$/,
 					use: ['ejs-compiled-loader']
 				}, {
