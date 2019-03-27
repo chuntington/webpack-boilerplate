@@ -1,6 +1,6 @@
 {
 	"name": "webpack-boilerplate",
-	"version": "0.1.6",
+	"version": "0.1.7",
 	"description": "A simple webpack setup for generating static websites.",
 	"scripts": {
 		"build": "node_modules/webpack/bin/webpack.js --progress --hide-modules --config=webpack.config.js",
@@ -10,15 +10,15 @@
 	"author": "Cameron Huntington",
 	"license": "MIT",
 	"devDependencies": {
-		"@babel/core": "^7.2.2",
-		"@babel/preset-env": "^7.2.3",
-		"babel-loader": "^8.0.4",
+		"@babel/core": "^7.4.0",
+		"@babel/preset-env": "^7.4.2",
+		"babel-loader": "^8.0.5",
 		"compression-webpack-plugin": "^1.1.12",
 		"css-loader": "^1.0.1",
 		"dotenv": "^6.2.0",
 		"ejs-compiled-loader": "^1.1.0",
-		"eslint": "^5.11.1",
-		"eslint-loader": "^2.1.1",
+		"eslint": "^5.15.3",
+		"eslint-loader": "^2.1.2",
 		"eslint-plugin-html": "^4.0.6",
 		"extract-text-webpack-plugin": "^3.0.2",
 		"file-loader": "^2.0.0",
@@ -31,18 +31,18 @@
 		"sass-loader": "^7.1.0",
 		"style-loader": "^0.23.1",
 		"uglifyjs-webpack-plugin": "^1.3.0",
-		"vue-loader": "^15.4.2",
-		"vue-template-compiler": "^2.5.21",
+		"vue-loader": "^15.7.0",
+		"vue-template-compiler": "^2.6.10",
 		"webpack": "^3.12.0"
 	},
 	"dependencies": {
 		"axios": "^0.18.0",
-		"bootstrap": "^4.2.1",
+		"bootstrap": "^4.3.1",
 		"date-fns": "^1.30.1",
 		"jquery": "^3.3.1",
-		"popper.js": "^1.14.6",
+		"popper.js": "^1.14.7",
 		"underscore": "^1.9.1",
-		"vue": "^2.5.21"
+		"vue": "^2.6.10"
 	},
 	"repository": {
 		"type": "git",
