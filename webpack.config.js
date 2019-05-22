@@ -5,6 +5,7 @@ const glob = require('glob');
 const path = require('path');
 const webpack = require('webpack');
 
+const Autoprefixer = require('autoprefixer');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
@@ -180,12 +181,30 @@ const configurator = new Configurator({
 					}
 				}, {
 					test: /\.css$/,
-					use: ['css-loader']
-				}, {
+					use: [
+						'style-loader',
+						'css-loader',
+						{
+							loader: 'postcss-loader',
+							options: {
+								plugins: (process.env.PREFIX_CSS == 'true') ? [Autoprefixer()] : []
+							}
+						}
+					]
+				  }, {
 					test: /\.scss$/,
 					use: ExtractTextPlugin.extract({
 						fallback: 'style-loader',
-						use: ['css-loader', 'sass-loader']
+						use: [
+							'css-loader',
+							{
+								loader: 'postcss-loader',
+								options: {
+									plugins: (process.env.PREFIX_CSS == 'true') ? [Autoprefixer()] : []
+								}
+							},
+							'sass-loader'
+						]
 					})
 				}, {
 					test: /\.(ttf|eot|otf|woff|woff2)$/,
@@ -224,7 +243,7 @@ const configurator = new Configurator({
 				allChunks: true
 			}),
 			new OptimizeCSSPlugin(),
-			new VueLoaderPlugin()
+			new VueLoaderPlugin(),
 		],
 		resolve: {
 			alias: {
