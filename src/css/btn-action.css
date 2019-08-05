@@ -1,0 +1,74 @@
+.btn-action {
+	@apply relative overflow-hidden;
+
+	transition: all 150ms ease;
+
+	&:before {
+		@apply absolute h-full left-0 opacity-0 top-0 w-full z-10;
+
+		background-position: 50% 50%;
+		background-size: 100% 0;
+		content: "";
+		transform: scale(0.25, 1);
+		transform-origin: 50% 50%;
+		transition: all 300ms ease;
+	}
+
+	&.btn-action:hover:before {
+		transform: scale(1, 1);
+	}
+
+	&.btn-outline-pink {
+		&:hover {
+			color: theme("colors.white");
+
+			&:before {
+				@apply bg-pink-500 opacity-100;
+			}
+		}
+
+		&:active:before {
+			background-image:
+				radial-gradient(
+					circle at 50% 50%,
+					theme("colors.pink.300"),
+					steps(4),
+					theme("colors.pink.600")
+				);
+			background-size: 100% 100%;
+		}
+	}
+
+	& > .btn-active-text,
+	& > .btn-hover-focus-text,
+	& > .btn-text {
+		@apply relative z-20;
+	}
+
+	& > .btn-active-text,
+	& > .btn-hover-focus-text {
+		@apply hidden;
+	}
+
+	&:hover, &:focus {
+		& > .btn-text,
+		& > .btn-active-text {
+			@apply hidden;
+		}
+
+		& > .btn-hover-focus-text {
+			@apply block;
+		}
+	}
+
+	&:active {
+		& > .btn-text,
+		& > .btn-hover-focus-text {
+			@apply hidden;
+		}
+
+		& > .btn-active-text {
+			@apply block;
+		}
+	}
+}

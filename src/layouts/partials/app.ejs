@@ -1,8 +1,0 @@
-<% if (htmlWebpackPlugin.options.appMountId) { %>
-	<div id="<%= htmlWebpackPlugin.options.appMountId%>"></div>
-<% } %>
-<% if (htmlWebpackPlugin.options.appMountIds && htmlWebpackPlugin.options.appMountIds.length > 0) { %>
-	<% for (var index in htmlWebpackPlugin.options.appMountIds) { %>
-		<div id="<%= htmlWebpackPlugin.options.appMountIds[index]%>"></div>
-	<% } %>
-<% } %>
