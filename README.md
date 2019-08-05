@@ -1,6 +1,6 @@
 # Webpack Boilerplate
 
-A simple Webpack setup utilizing modern features and frameworks for generating static web pages.
+A simple-ish Webpack setup utilizing modern features and frameworks for generating static web pages.
 
 For the **beehive**:
 
@@ -14,9 +14,9 @@ For the **beehive**:
 
 For the **script kidz**:
 
-- Babel (Transpiling to more compatible versions)
-- Terser (Uglifying and compressing)
-- ESLint (Keeping things in order)
+- Babel *(Transpiling to more compatible versions)*
+- Terser *(Uglifying and compressing)*
+- ESLint *(Keeping things in order)*
 - [Insert testing framework here]
 
 To get started, clone the project and install the dependencies:
@@ -32,7 +32,7 @@ npm run watch
 npm run production
 ```
 
-Out of the box, the watch flag will instruct Webpack to rebuild the project if `src/app.js` or any of its dependencies change.
+Out of the box, the watch flag will instruct Webpack to rebuild the project if any dependent files in `/src` change.
 
 The generated bundle will be placed inside the `/dist` directory.
 
