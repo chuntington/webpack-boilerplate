@@ -4,17 +4,17 @@ A simple-ish Webpack setup utilizing modern features and frameworks for generati
 
 For the **beehive**:
 
-- TailwindCSS *(Scaffolding utilities)*
-- Autoprefixer *(Prefixing for browsers)*
+- TailwindCSS *(Utility framework)*
+- Autoprefixer *(Prefixing for target browsers)*
 - FontMagician *(Generating @font-face rules)*
 - EasingGradients *(Generating eased gradients)*
-- CSSNano *(Minifying final builds)*
-- PurgeCSS *(Removing unused classes)*
+- CSSNano *(Compressing and minifying)*
+- PurgeCSS *(Removing unused styles)*
 - StyleLint *(Keeping things in order)*
 
 For the **script kidz**:
 
-- Babel *(Transpiling to more compatible versions)*
+- Babel *(Transpiling and compiling)*
 - Terser *(Uglifying and compressing)*
 - ESLint *(Keeping things in order)*
 - [Insert testing framework here]
@@ -25,63 +25,96 @@ To get started, clone the project and install the dependencies:
 npm install
 ```
 
-After that, watch your files or build for production:
+After that, watch your files (build on save), or build for an environment specified in an `.env` file:
 
 ```
 npm run watch
-npm run production
+npm run build
 ```
-
-Out of the box, the watch flag will instruct Webpack to rebuild the project if any dependent files in `/src` change.
 
 The generated bundle will be placed inside the `/dist` directory.
 
-### Want to use a SPA framework?
+### Using SPA Frameworks
 
 Below is an example of implementing Vuejs. *Other frameworks may be used according to their independent implementations.*
 
 In your terminal:
 
 ```
-npm install vue
-npm install vue-template-compiler
-npm install vue-loader
+npm install vue vue-loader vue-template-compiler
 ```
 
-In `webpack.config.js`, assign the loader:
+In `webpack.config.js`, import and assign appropriate loaders:
 
 ```
-module: {
-	rules: [
-		{
-			test: /\.vue$/,
-			loader: 'vue-loader'
-		}, {
-			test: /\.css$/,
-			use: [
-				'vue-style-loader',
-				// ...
-			]
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+
+module.exports = {
+	module: {
+		rules: [
+			{
+				test: /\.vue$/,
+				loader: 'vue-loader'
+			}, {
+				test: /\.css$/,
+				use: [
+					'vue-style-loader',
+					// ...
+				]
+			}
+		]
+	},
+	plugins: [
+		new VueLoaderPlugin()
+	],
+	// Override the alias for template interpolation
+	resolve: {
+		alias: {
+			vue: 'vue/dist/vue.esm.js'
 		}
-	]
-},
-plugins: [
-	new VueLoaderPlugin()
-],
-// Override the alias for template interpolation
-resolve: {
-	alias: {
-		vue: 'vue/dist/vue.esm.js'
 	}
 }
 ```
 
-In `src/app.js`, import and instantiate:
+In `src/components/ExampleComponent.vue`, create the component template:
 
 ```
+<template>
+	<h1 class="text-teal-500">Example Component</h1>
+</template>
+
+<script>
+	export default {
+		data: () => ({
+			mounted: false
+		}),
+		mounted() {
+			this.mounted = true;
+
+			console.log(this.mounted);
+		}
+	};
+</script>
+```
+
+In `src/index.html`, create the app container:
+
+```
+<body class="bg-gray-100 font-sans">
+	<div id="app">
+		<example-component></example-component>
+	</div>
+	// ...
+</body>
+```
+
+In `src/main.js`, import and instantiate:
+
+```
+import ExampleComponent from './components/ExampleComponent.vue';
 import Vue from 'vue';
 
-const vm = new Vue({ ...options });
+const vm = new Vue({ components: { ExampleComponent } });
 
 vm.$mount('#app');
 ```
@@ -97,4 +130,4 @@ Purgecss({
 })
 ```
 
-**Voila!** Rinse and repeat for the framework of your choosing.
+**Voila!**
