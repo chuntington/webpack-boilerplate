@@ -4,19 +4,19 @@ A simple-ish Webpack setup utilizing modern features and frameworks for generati
 
 For the **beehive**:
 
-- TailwindCSS *(Utility framework)*
-- Autoprefixer *(Prefixing for target browsers)*
-- FontMagician *(Generating @font-face rules)*
-- EasingGradients *(Generating eased gradients)*
-- CSSNano *(Compressing and minifying)*
-- PurgeCSS *(Removing unused styles)*
-- StyleLint *(Keeping things in order)*
+- [TailwindCSS](https://github.com/tailwindcss/tailwindcss) *(Utility framework)*
+- [Autoprefixer](https://github.com/postcss/autoprefixer) *(Prefixing for target browsers)*
+- [FontMagician](https://github.com/jonathantneal/postcss-font-magician) *(Generating @font-face rules)*
+- [EasingGradients](https://github.com/larsenwork/postcss-easing-gradients) *(Generating eased gradients)*
+- [CSSNano](https://github.com/cssnano/cssnano) *(Compressing and minifying)*
+- [PurgeCSS](https://github.com/FullHuman/postcss-purgecss) *(Removing unused styles)*
+- [StyleLint](https://github.com/stylelint/stylelint) *(Keeping things in order)*
 
 For the **script kidz**:
 
-- Babel *(Transpiling and compiling)*
-- Terser *(Uglifying and compressing)*
-- ESLint *(Keeping things in order)*
+- [Babel](https://github.com/babel/babel) *(Transpiling and compiling)*
+- [Terser](https://github.com/terser-js/terser) *(Uglifying and compressing)*
+- [ESLint](https://github.com/eslint/eslint) *(Keeping things in order)*
 - [Insert testing framework here]
 
 To get started, clone the project and install the dependencies:
