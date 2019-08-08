@@ -36,7 +36,7 @@ The generated bundle will be placed inside the `/dist` directory.
 
 ### Using SPA Frameworks
 
-Below is an example of implementing Vuejs. *Other frameworks may be used according to their independent implementations.*
+Below is an example of implementing Vue.js, along with `.vue` template support.
 
 In your terminal:
 
@@ -50,29 +50,29 @@ In `webpack.config.js`, import and assign appropriate loaders:
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
-	module: {
-		rules: [
-			{
-				test: /\.vue$/,
-				loader: 'vue-loader'
-			}, {
-				test: /\.css$/,
-				use: [
-					'vue-style-loader',
-					// ...
-				]
-			}
-		]
-	},
-	plugins: [
-		new VueLoaderPlugin()
-	],
-	// Override the alias for template interpolation
-	resolve: {
-		alias: {
-			vue: 'vue/dist/vue.esm.js'
-		}
-	}
+    module: {
+        rules: [
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader'
+            }, {
+                test: /\.css$/,
+                use: [
+                    'vue-style-loader',
+                    // ...
+                ]
+            }
+        ]
+    },
+    plugins: [
+        new VueLoaderPlugin()
+    ],
+    // Override the alias for template interpolation
+    resolve: {
+        alias: {
+            vue: 'vue/dist/vue.esm.js'
+        }
+    }
 }
 ```
 
@@ -80,20 +80,20 @@ In `src/components/ExampleComponent.vue`, create the component template:
 
 ```
 <template>
-	<h1 class="text-teal-500">Example Component</h1>
+    <h1 class="text-teal-500">Example Component</h1>
 </template>
 
 <script>
-	export default {
-		data: () => ({
-			mounted: false
-		}),
-		mounted() {
-			this.mounted = true;
+    export default {
+        data: () => ({
+            mounted: false
+        }),
+        mounted() {
+            this.mounted = true;
 
-			console.log(this.mounted);
-		}
-	};
+            console.log(this.mounted);
+        }
+    };
 </script>
 ```
 
@@ -101,10 +101,10 @@ In `src/index.html`, create the app container:
 
 ```
 <body class="bg-gray-100 font-sans">
-	<div id="app">
-		<example-component></example-component>
-	</div>
-	// ...
+    <div id="app">
+        <example-component></example-component>
+    </div>
+    // ...
 </body>
 ```
 
@@ -123,10 +123,10 @@ In `postcss.config.js`, inform Purgecss about any `.vue` templates:
 
 ```
 Purgecss({
-	content: [
-		// Scan any folder inside /src/js
-		'./src/js/**/*.vue'
-	]
+    content: [
+        // Scan any folder inside /src/js
+        './src/js/**/*.vue'
+    ]
 })
 ```
 
