@@ -36,7 +36,7 @@ The generated bundle will be placed inside the `/dist` directory.
 
 ### Using SPA Frameworks
 
-Below is an example of implementing Vue.js, along with `.vue` template support.
+Below is an example of implementing [Vue.js](https://vuejs.org/), along with `.vue` [template support](https://github.com/vuejs/vue/tree/dev/packages/vue-template-compiler).
 
 In your terminal:
 
