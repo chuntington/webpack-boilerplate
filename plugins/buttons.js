@@ -1,181 +1,182 @@
 module.exports = function({ addComponents, theme }) {
-	const buttons = {
-		'black': {
-			'bg': {
-				'color': theme('colors.black'),
-				'hover': theme('colors.black'),
-				'focus': theme('colors.black'),
-				'active': theme('colors.black')
-			},
-			'text': {
-				'color': '#fff',
-				'hover': '#fff',
-				'focus': '#fff',
-				'active': '#fff'
-			}
-		},
-		'white': {
-			'bg': {
-				'color': theme('colors.white'),
-				'hover': theme('colors.white'),
-				'focus': theme('colors.white'),
-				'active': theme('colors.white')
-			},
-			'text': {
-				'color': '#000',
-				'hover': '#000',
-				'focus': '#000',
-				'active': '#000'
-			}
-		},
-		'gray': {
-			'bg': {
-				'color': theme('colors.gray.500'),
-				'hover': theme('colors.gray.600'),
-				'focus': theme('colors.gray.600'),
-				'active': theme('colors.gray.700')
-			},
-			'text': {
-				'color': '#fff',
-				'hover': '#fff',
-				'focus': '#fff',
-				'active': '#fff'
-			}
-		},
-		'red': {
-			'bg': {
-				'color': theme('colors.red.500'),
-				'hover': theme('colors.red.600'),
-				'focus': theme('colors.red.600'),
-				'active': theme('colors.red.700')
-			},
-			'text': {
-				'color': '#fff',
-				'hover': '#fff',
-				'focus': '#fff',
-				'active': '#fff'
-			}
-		},
-		'orange': {
-			'bg': {
-				'color': theme('colors.orange.500'),
-				'hover': theme('colors.orange.600'),
-				'focus': theme('colors.orange.600'),
-				'active': theme('colors.orange.700')
-			},
-			'text': {
-				'color': '#fff',
-				'hover': '#fff',
-				'focus': '#fff',
-				'active': '#fff'
-			}
-		},
-		'yellow': {
-			'bg': {
-				'color': theme('colors.yellow.500'),
-				'hover': theme('colors.yellow.600'),
-				'focus': theme('colors.yellow.600'),
-				'active': theme('colors.yellow.700')
-			},
-			'text': {
-				'color': '#fff',
-				'hover': '#fff',
-				'focus': '#fff',
-				'active': '#fff'
-			}
-		},
-		'green': {
-			'bg': {
-				'color': theme('colors.green.500'),
-				'hover': theme('colors.green.600'),
-				'focus': theme('colors.green.600'),
-				'active': theme('colors.green.700')
-			},
-			'text': {
-				'color': '#fff',
-				'hover': '#fff',
-				'focus': '#fff',
-				'active': '#fff'
-			}
-		},
-		'teal': {
-			'bg': {
-				'color': theme('colors.teal.500'),
-				'hover': theme('colors.teal.600'),
-				'focus': theme('colors.teal.600'),
-				'active': theme('colors.teal.700')
-			},
-			'text': {
-				'color': '#fff',
-				'hover': '#fff',
-				'focus': '#fff',
-				'active': '#fff'
-			}
-		},
-		'blue': {
-			'bg': {
-				'color': theme('colors.blue.500'),
-				'hover': theme('colors.blue.600'),
-				'focus': theme('colors.blue.600'),
-				'active': theme('colors.blue.700')
-			},
-			'text': {
-				'color': '#fff',
-				'hover': '#fff',
-				'focus': '#fff',
-				'active': '#fff'
-			}
-		},
-		'indigo': {
-			'bg': {
-				'color': theme('colors.indigo.500'),
-				'hover': theme('colors.indigo.600'),
-				'focus': theme('colors.indigo.600'),
-				'active': theme('colors.indigo.700')
-			},
-			'text': {
-				'color': '#fff',
-				'hover': '#fff',
-				'focus': '#fff',
-				'active': '#fff'
-			}
-		},
-		'purple': {
-			'bg': {
-				'color': theme('colors.purple.500'),
-				'hover': theme('colors.purple.600'),
-				'focus': theme('colors.purple.600'),
-				'active': theme('colors.purple.700')
-			},
-			'text': {
-				'color': '#fff',
-				'hover': '#fff',
-				'focus': '#fff',
-				'active': '#fff'
-			}
-		},
-		'pink': {
-			'bg': {
-				'color': theme('colors.pink.500'),
-				'hover': theme('colors.pink.600'),
-				'focus': theme('colors.pink.600'),
-				'active': theme('colors.pink.700')
-			},
-			'text': {
-				'color': '#fff',
-				'hover': '#fff',
-				'focus': '#fff',
-				'active': '#fff'
-			}
-		}
-	};
-
 	const borderRadius = theme('borderRadius', {});
+	const colors = theme('colors', {});
 	const fontFamily = theme('fontFamily', {});
 	const fontSize = theme('fontSize', {});
 	const fontWeight = theme('fontWeight', {});
 	const lineHeight = theme('lineHeight', {});
 	const padding = theme('padding', {});
+
+	const buttons = {
+		'black': {
+			'bg': {
+				'color': colors['black'],
+				'hover': colors['black'],
+				'focus': colors['black'],
+				'active': colors['black']
+			},
+			'text': {
+				'color': colors['white'],
+				'hover': colors['white'],
+				'focus': colors['white'],
+				'active': colors['white']
+			}
+		},
+		'white': {
+			'bg': {
+				'color': colors['white'],
+				'hover': colors['white'],
+				'focus': colors['white'],
+				'active': colors['white']
+			},
+			'text': {
+				'color': colors['black'],
+				'hover': colors['black'],
+				'focus': colors['black'],
+				'active': colors['black']
+			}
+		},
+		'gray': {
+			'bg': {
+				'color': colors['gray']['500'],
+				'hover': colors['gray']['600'],
+				'focus': colors['gray']['600'],
+				'active': colors['gray']['700']
+			},
+			'text': {
+				'color': colors['white'],
+				'hover': colors['white'],
+				'focus': colors['white'],
+				'active': colors['white']
+			}
+		},
+		'red': {
+			'bg': {
+				'color': colors['red']['500'],
+				'hover': colors['red']['600'],
+				'focus': colors['red']['600'],
+				'active': colors['red']['700']
+			},
+			'text': {
+				'color': colors['white'],
+				'hover': colors['white'],
+				'focus': colors['white'],
+				'active': colors['white']
+			}
+		},
+		'orange': {
+			'bg': {
+				'color': colors['orange']['500'],
+				'hover': colors['orange']['600'],
+				'focus': colors['orange']['600'],
+				'active': colors['orange']['700']
+			},
+			'text': {
+				'color': colors['white'],
+				'hover': colors['white'],
+				'focus': colors['white'],
+				'active': colors['white']
+			}
+		},
+		'yellow': {
+			'bg': {
+				'color': colors['yellow']['500'],
+				'hover': colors['yellow']['600'],
+				'focus': colors['yellow']['600'],
+				'active': colors['yellow']['700']
+			},
+			'text': {
+				'color': colors['white'],
+				'hover': colors['white'],
+				'focus': colors['white'],
+				'active': colors['white']
+			}
+		},
+		'green': {
+			'bg': {
+				'color': colors['green']['500'],
+				'hover': colors['green']['600'],
+				'focus': colors['green']['600'],
+				'active': colors['green']['700']
+			},
+			'text': {
+				'color': colors['white'],
+				'hover': colors['white'],
+				'focus': colors['white'],
+				'active': colors['white']
+			}
+		},
+		'teal': {
+			'bg': {
+				'color': colors['teal']['500'],
+				'hover': colors['teal']['600'],
+				'focus': colors['teal']['600'],
+				'active': colors['teal']['700']
+			},
+			'text': {
+				'color': colors['white'],
+				'hover': colors['white'],
+				'focus': colors['white'],
+				'active': colors['white']
+			}
+		},
+		'blue': {
+			'bg': {
+				'color': colors['blue']['500'],
+				'hover': colors['blue']['600'],
+				'focus': colors['blue']['600'],
+				'active': colors['blue']['700']
+			},
+			'text': {
+				'color': colors['white'],
+				'hover': colors['white'],
+				'focus': colors['white'],
+				'active': colors['white']
+			}
+		},
+		'indigo': {
+			'bg': {
+				'color': colors['indigo']['500'],
+				'hover': colors['indigo']['600'],
+				'focus': colors['indigo']['600'],
+				'active': colors['indigo']['700']
+			},
+			'text': {
+				'color': colors['white'],
+				'hover': colors['white'],
+				'focus': colors['white'],
+				'active': colors['white']
+			}
+		},
+		'purple': {
+			'bg': {
+				'color': colors['purple']['500'],
+				'hover': colors['purple']['600'],
+				'focus': colors['purple']['600'],
+				'active': colors['purple']['700']
+			},
+			'text': {
+				'color': colors['white'],
+				'hover': colors['white'],
+				'focus': colors['white'],
+				'active': colors['white']
+			}
+		},
+		'pink': {
+			'bg': {
+				'color': colors['pink']['500'],
+				'hover': colors['pink']['600'],
+				'focus': colors['pink']['600'],
+				'active': colors['pink']['700']
+			},
+			'text': {
+				'color': colors['white'],
+				'hover': colors['white'],
+				'focus': colors['white'],
+				'active': colors['white']
+			}
+		}
+	};
 
 	addComponents([
 		{

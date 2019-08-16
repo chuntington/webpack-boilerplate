@@ -7,8 +7,6 @@ module.exports = function({ addComponents, theme }) {
 	const lineHeight = theme('lineHeight', {});
 	const padding = theme('padding', {});
 
-	// bg-gray-200
-
 	addComponents([
 		{
 			'.input': {

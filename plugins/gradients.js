@@ -1,52 +1,54 @@
 module.exports = function({ addUtilities, theme }) {
+	const colors = theme('colors', {});
+
 	const gradients = {
 		'black-white': [
-			theme('colors.black'),
-			theme('colors.white')
+			colors['black'],
+			colors['white']
 		],
 		'black-gray': [
-			theme('colors.black'),
-			theme('colors.gray.500')
+			colors['black'],
+			colors['gray']['500']
 		],
 		'white-black': [
-			theme('colors.white'),
-			theme('colors.black')
+			colors['white'],
+			colors['black']
 		],
 		'white-gray': [
-			theme('colors.white'),
-			theme('colors.gray.500')
+			colors['white'],
+			colors['gray']['500']
 		],
 		'red-orange': [
-			theme('colors.red.500'),
-			theme('colors.orange.500')
+			colors['red']['500'],
+			colors['orange']['500']
 		],
 		'orange-yellow': [
-			theme('colors.orange.500'),
-			theme('colors.yellow.500')
+			colors['orange']['500'],
+			colors['yellow']['500']
 		],
 		'yellow-green': [
-			theme('colors.yellow.500'),
-			theme('colors.green.500')
+			colors['yellow']['500'],
+			colors['green']['500']
 		],
 		'green-teal': [
-			theme('colors.green.500'),
-			theme('colors.teal.500')
+			colors['green']['500'],
+			colors['teal']['500']
 		],
 		'teal-blue': [
-			theme('colors.teal.500'),
-			theme('colors.blue.500')
+			colors['teal']['500'],
+			colors['blue']['500']
 		],
 		'blue-indigo': [
-			theme('colors.blue.500'),
-			theme('colors.indigo.500')
+			colors['blue']['500'],
+			colors['indigo']['500']
 		],
 		'indigo-purple': [
-			theme('colors.indigo.500'),
-			theme('colors.purple.500')
+			colors['indigo']['500'],
+			colors['purple']['500']
 		],
 		'purple-pink': [
-			theme('colors.purple.500'),
-			theme('colors.pink.500')
+			colors['purple']['500'],
+			colors['pink']['500']
 		]
 	};
 
