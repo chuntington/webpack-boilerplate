@@ -3,9 +3,9 @@ module.exports = {
 		'es6': true
 	},
 	parserOptions: {
-        'ecmaVersion': 10,
-        'sourceType': 'module'
-    },
+		'ecmaVersion': 10,
+		'sourceType': 'module'
+	},
 	rules: {
 		'accessor-pairs': 'off',
 		'array-bracket-newline': ['error', 'consistent'],
@@ -76,11 +76,11 @@ module.exports = {
 		'global-require': 'warn',
 		'guard-for-in': 'error',
 		'handle-callback-err': ['warn', '^(err|error|errors)$'],
-		'id-blacklist': ['warn', 'data'],
+		'id-blacklist': ['warn'],
 		'id-length': [
 			'warn',
 			{
-				'exceptions': ['i', 'j', 'k', 'r', 'x', 'y', 'z']
+				'exceptions': ['i', 'j', 'k', 'n', 'r', 'x', 'y', 'z']
 			}
 		],
 		'id-match': 'off',
