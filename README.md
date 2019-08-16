@@ -41,7 +41,7 @@ Below is an example of a [Vue.js](https://vuejs.org/) implementation, along with
 In your terminal:
 
 ```
-npm install vue vue-loader vue-template-compiler
+npm install vue vue-loader vue-template-compiler --save-dev
 ```
 
 In `webpack.config.js`, import and assign appropriate loaders:
@@ -74,6 +74,17 @@ module.exports = {
         }
     }
 }
+```
+
+In `postcss.config.js`, inform Purgecss about any `.vue` templates:
+
+```
+Purgecss({
+    content: [
+        // Scan any folder inside /src/js
+        './src/js/**/*.vue'
+    ]
+})
 ```
 
 In `src/components/ExampleComponent.vue`, create the component template:
@@ -117,17 +128,6 @@ import Vue from 'vue';
 const vm = new Vue({ components: { ExampleComponent } });
 
 vm.$mount('#app');
-```
-
-In `postcss.config.js`, inform Purgecss about any `.vue` templates:
-
-```
-Purgecss({
-    content: [
-        // Scan any folder inside /src/js
-        './src/js/**/*.vue'
-    ]
-})
 ```
 
 **Voila!**
