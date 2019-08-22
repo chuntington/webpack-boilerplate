@@ -1,5 +1,6 @@
 module.exports = function({ addComponents, theme }) {
 	const borderRadius = theme('borderRadius', {});
+	const borderWidth = theme('borderWidth', {});
 	const colors = theme('colors', {});
 	const fontFamily = theme('fontFamily', {});
 	const fontSize = theme('fontSize', {});
@@ -226,21 +227,23 @@ module.exports = function({ addComponents, theme }) {
 			},
 			[`.btn-outline-${key}`]: {
 				'backgroundColor': 'transparent',
-				'border': `1px solid ${buttons[key].bg.color}`,
+				'borderColor': buttons[key].bg.color,
+				'borderStyle': 'solid',
+				'borderWidth': borderWidth['default'],
 				'color': buttons[key].bg.color,
 				'&:hover': {
 					'backgroundColor': 'transparent',
-					'border-color': buttons[key].bg.hover,
+					'borderColor': buttons[key].bg.hover,
 					'color': buttons[key].bg.hover
 				},
 				'&:focus': {
 					'backgroundColor': 'transparent',
-					'border-color': buttons[key].bg.focus,
+					'borderColor': buttons[key].bg.focus,
 					'color': buttons[key].bg.focus
 				},
 				'&:active, &.active': {
 					'backgroundColor': buttons[key].bg.color,
-					'border-color': buttons[key].bg.color,
+					'borderColor': buttons[key].bg.color,
 					'color': buttons[key].text.active
 				}
 			}
