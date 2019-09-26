@@ -33,6 +33,7 @@ module.exports = {
 			colorStops: 12
 		}),
 		FontMagician({
+			display: 'swap',
 			foundries: ['google']
 		}),
 		(!DevMode)
