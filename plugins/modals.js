@@ -25,6 +25,7 @@ module.exports = function({ addComponents }) {
 			},
 			'.modal-wrap': {
 				'position': 'relative',
+				'width': '100%',
 				'zIndex': '30'
 			}
 		}
