@@ -1,33 +1,24 @@
-module.exports = function({ addComponents }) {
+module.exports = function({ addComponents, theme }) {
+	const height = theme('height', {});
+	const maxWidth = theme('maxWidth', {});
+	const width = theme('width', {});
+	const zIndex = theme('zIndex', {});
+
 	addComponents({
-		'.modal': {
+		'.modal-overlay': {
 			'alignItems': 'center',
-			'display': 'none',
-			'height': '100%',
+			'backgroundColor': 'rgba(0, 0, 0, 0.5)',
+			'display': 'flex',
+			'height': height['full'],
 			'justifyContent': 'center',
 			'left': '0',
 			'position': 'fixed',
 			'top': '0',
-			'width': '100%',
-			'zIndex': '10',
-			'&.open': {
-				'display': 'flex'
-			},
-			'.modal-overlay': {
-				'backgroundColor': 'black',
-				'height': '100%',
-				'left': '0',
-				'opacity': '0.5',
-				'position': 'absolute',
-				'top': '0',
-				'width': '100%',
-				'zIndex': '20',
-			},
-			'.modal-wrap': {
-				'position': 'relative',
-				'width': '100%',
-				'zIndex': '30'
-			}
+			'width': width['full'],
+			'zIndex': zIndex['10']
+		},
+		'.modal': {
+			'minWidth': maxWidth['sm']
 		}
 	});
 };

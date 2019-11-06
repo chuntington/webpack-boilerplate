@@ -6,6 +6,7 @@ module.exports = function({ addComponents, theme }) {
 	const fontWeight = theme('fontWeight', {});
 	const lineHeight = theme('lineHeight', {});
 	const padding = theme('padding', {});
+	const width = theme('width', {});
 
 	addComponents({
 		'.input': {
@@ -19,7 +20,7 @@ module.exports = function({ addComponents, theme }) {
 			'fontWeight': fontWeight['normal'],
 			'lineHeight': lineHeight['tight'],
 			'padding': padding['3'] + ' ' + padding['4'],
-			'width': '100%',
+			'width': width['full'],
 			'&:focus': {
 				'outline': 'none',
 			},

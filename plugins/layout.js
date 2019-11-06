@@ -1,6 +1,8 @@
 module.exports = function({ addComponents, theme }) {
+	const flexGrow = theme('flexGrow', {});
 	const margin = theme('margin', {});
 	const padding = theme('padding', {});
+	const width = theme('width', {});
 
 	addComponents({
 		'.container': {
@@ -10,11 +12,11 @@ module.exports = function({ addComponents, theme }) {
 		'.col': {
 			'paddingLeft': padding['6'],
 			'paddingRight': padding['6'],
-			'width': '100%'
+			'width': width['full']
 		},
 		'.row': {
 			'display': 'flex',
-			'flexGrow': '1',
+			'flexGrow': flexGrow['default'],
 			'flexWrap': 'wrap',
 			'marginLeft': margin['-6'],
 			'marginRight': margin['-6']

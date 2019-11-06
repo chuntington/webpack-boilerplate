@@ -83,8 +83,9 @@ module.exports = {
 		}
 	},
 	output: {
-		path: Path.resolve(__dirname, 'dist'),
-		filename: (DevMode) ? '[name].js' : '[name].[hash].js'
+		chunkFilename: (DevMode) ? '[name].js' : '[name].[hash].js',
+		filename: (DevMode) ? '[name].js' : '[name].[hash].js',
+		path: Path.resolve(__dirname, 'dist')
 	},
 	plugins: [
 		new CleanWebpackPlugin({
