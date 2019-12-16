@@ -21,13 +21,13 @@ For the **script kidz**:
 
 To get started, clone the project and install the dependencies:
 
-```
+```bash
 npm install
 ```
 
 After that, watch your files (build on save), or build for an environment specified in an `.env` file:
 
-```
+```bash
 npm run watch
 npm run build
 ```
@@ -40,13 +40,13 @@ Below is an example of a [Vue.js](https://vuejs.org/) implementation, along with
 
 In your terminal:
 
-```
+```bash
 npm install vue vue-loader vue-template-compiler --save-dev
 ```
 
 In `webpack.config.js`, import and assign appropriate loaders:
 
-```
+```javascript
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
@@ -78,7 +78,7 @@ module.exports = {
 
 In `postcss.config.js`, inform Purgecss about any `.vue` templates:
 
-```
+```javascript
 Purgecss({
     content: [
         // Scan any folder inside /src/js
@@ -89,7 +89,7 @@ Purgecss({
 
 In `src/components/ExampleComponent.vue`, create the component template:
 
-```
+```vue
 <template>
     <h1 class="text-teal-500">Example Component</h1>
 </template>
@@ -110,7 +110,7 @@ In `src/components/ExampleComponent.vue`, create the component template:
 
 In `src/index.html`, create the app container:
 
-```
+```html
 <body class="bg-gray-100 font-sans">
     <div id="app">
         <example-component></example-component>
@@ -121,7 +121,7 @@ In `src/index.html`, create the app container:
 
 In `src/main.js`, import and instantiate:
 
-```
+```javascript
 import ExampleComponent from './components/ExampleComponent.vue';
 import Vue from 'vue';
 
@@ -130,4 +130,4 @@ const vm = new Vue({ components: { ExampleComponent } });
 vm.$mount('#app');
 ```
 
-**Voila!**
+🎩 **Voila!**
