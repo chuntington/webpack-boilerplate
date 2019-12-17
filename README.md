@@ -21,15 +21,25 @@ For the **script kidz**:
 
 To get started, clone the project and install the dependencies:
 
-```bash
-npm install
+```shell
+> git clone https://github.com/chuntington/webpack-boilerplate.git
+> cd webpack-boilerplate/
+> npm install
 ```
 
-After that, watch your files (build on save), or build for an environment specified in an `.env` file:
+Create a `.env` file in the root directory and specify your build environment:
 
-```bash
-npm run watch
-npm run build
+```
+NODE_ENV=development
+// or
+NODE_ENV=production
+```
+
+Build your project once, or build on save:
+
+```shell
+> npm run build
+> npm run watch
 ```
 
 The generated bundle will be placed inside the `/dist` directory.
@@ -40,7 +50,7 @@ Below is an example of a [Vue.js](https://vuejs.org/) implementation, along with
 
 In your terminal:
 
-```bash
+```shell
 npm install vue vue-loader vue-template-compiler --save-dev
 ```
 
