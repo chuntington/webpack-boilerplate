@@ -51,7 +51,7 @@ Below is an example of a [Vue.js](https://vuejs.org/) implementation, along with
 In your terminal:
 
 ```shell
-npm install vue vue-loader vue-template-compiler --save-dev
+> npm install vue vue-loader vue-template-compiler --save-dev
 ```
 
 In `webpack.config.js`, import and assign appropriate loaders:
@@ -97,35 +97,39 @@ Purgecss({
 })
 ```
 
-In `src/components/ExampleComponent.vue`, create the component template:
+In `src/components/ExampleComponent.vue`, create a single-file component template:
 
 ```vue
 <template>
-    <h1 class="text-teal-500">Example Component</h1>
+    <h1 class="example">Example Component</h1>
 </template>
 
 <script>
     export default {
         data: () => ({
-            mounted: false
+            show: false
         }),
         mounted() {
-            this.mounted = true;
-
-            console.log(this.mounted);
+            this.show = true;
+            console.log('Example component mounted.');
         }
     };
 </script>
+
+<style>
+    .example {
+        color: gray;
+    }
+</style>
 ```
 
 In `src/index.html`, create the app container:
 
 ```html
-<body class="bg-gray-100 font-sans">
+<body class="antialiased">
     <div id="app">
         <example-component></example-component>
     </div>
-    // ...
 </body>
 ```
 
