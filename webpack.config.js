@@ -11,7 +11,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const DevMode = process.env.NODE_ENV === 'development';
 
 module.exports = {
-	entry: './src/js/main.js',
+	entry: Path.resolve(__dirname, 'src/js/main.js'),
 	mode: process.env.NODE_ENV,
 	module: {
 		rules: [
