@@ -489,7 +489,7 @@ module.exports = {
 		'stroke': ['responsive'],
 		'tableLayout': ['responsive'],
 		'textAlign': ['responsive'],
-		'textColor': ['responsive', 'hover', 'focus', 'group-hover'],
+		'textColor': ['responsive', 'hover', 'focus', 'group-hover', 'group-focus'],
 		'textDecoration': ['responsive', 'hover', 'focus'],
 		'textTransform': ['responsive'],
 		'userSelect': ['responsive'],

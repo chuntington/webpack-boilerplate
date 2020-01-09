@@ -8,7 +8,7 @@ module.exports = function({ addComponents, theme }) {
 	const lineHeight = theme('lineHeight', {});
 	const padding = theme('padding', {});
 
-	const makeBtn = function(
+	const generateButton = function(
 		base = '',
 		shades = [],
 		text = ''
@@ -32,18 +32,18 @@ module.exports = function({ addComponents, theme }) {
 	};
 
 	const buttons = {
-		'black': makeBtn('black', null, 'white'),
-		'white': makeBtn('white', null, 'black'),
-		'gray': makeBtn('gray', [500, 600, 600, 700, 300], 'white'),
-		'red': makeBtn('red', [500, 600, 600, 700, 300], 'white'),
-		'orange': makeBtn('orange', [500, 600, 600, 700, 300], 'white'),
-		'yellow': makeBtn('yellow', [500, 600, 600, 700, 300], 'white'),
-		'green': makeBtn('green', [500, 600, 600, 700, 300], 'white'),
-		'teal': makeBtn('teal', [500, 600, 600, 700, 300], 'white'),
-		'blue': makeBtn('blue', [500, 600, 600, 700, 300], 'white'),
-		'indigo': makeBtn('indigo', [500, 600, 600, 700, 300], 'white'),
-		'purple': makeBtn('teal', [500, 600, 600, 700, 300], 'white'),
-		'pink': makeBtn('pink', [500, 600, 600, 700, 300], 'white')
+		'black': generateButton('black', null, 'white'),
+		'white': generateButton('white', null, 'black'),
+		'gray': generateButton('gray', [500, 600, 600, 700, 300], 'white'),
+		'red': generateButton('red', [500, 600, 600, 700, 300], 'white'),
+		'orange': generateButton('orange', [500, 600, 600, 700, 300], 'white'),
+		'yellow': generateButton('yellow', [500, 600, 600, 700, 300], 'white'),
+		'green': generateButton('green', [500, 600, 600, 700, 300], 'white'),
+		'teal': generateButton('teal', [500, 600, 600, 700, 300], 'white'),
+		'blue': generateButton('blue', [500, 600, 600, 700, 300], 'white'),
+		'indigo': generateButton('indigo', [500, 600, 600, 700, 300], 'white'),
+		'purple': generateButton('teal', [500, 600, 600, 700, 300], 'white'),
+		'pink': generateButton('pink', [500, 600, 600, 700, 300], 'white')
 	};
 
 	addComponents([
