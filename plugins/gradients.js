@@ -53,7 +53,7 @@ module.exports = function({ addUtilities, theme }) {
 	};
 
 	addUtilities(
-		Object.keys(gradients).map(key => {
+		Object.keys(gradients).map((key) => {
 			let [start, end] = gradients[key];
 
 			return {

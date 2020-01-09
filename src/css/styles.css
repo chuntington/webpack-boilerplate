@@ -24,7 +24,8 @@ body {
  * Example usage of Tailwind's pseudo-class variants generator method.
  *
  * Variants take precendence in the order in which they are listed. In the rule
- * below, the `active` variant below will take precedence over `hover`.
+ * below, the `active` variant below will take precedence over `hover`. It is
+ * recommended to refactor variants extensions to a plugin where possible.
  */
 @variants hover, active {
 	.rotate-10 {
@@ -37,7 +38,7 @@ body {
  * should always be defined before importing Tailwind's utilities.
  *
  * Base components can be extended via JavaScript plugins. It is recommended to
- * refactor new components and utilities to a plugin where possible.
+ * refactor components and utilities to a plugin where possible.
  */
 @import "./btn-action.css";
 

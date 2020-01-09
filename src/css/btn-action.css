@@ -19,12 +19,8 @@
 	}
 
 	&.btn-outline-pink {
-		&:hover {
-			color: theme("colors.white");
-
-			&:before {
-				@apply bg-pink-500 opacity-100;
-			}
+		&:hover:before {
+			@apply bg-pink-500 opacity-100;
 		}
 
 		&:active:before {
@@ -38,37 +34,8 @@
 			background-size: 100% 100%;
 		}
 	}
+}
 
-	& > .btn-active-text,
-	& > .btn-hover-focus-text,
-	& > .btn-text {
-		@apply relative z-20;
-	}
-
-	& > .btn-active-text,
-	& > .btn-hover-focus-text {
-		@apply hidden;
-	}
-
-	&:hover, &:focus {
-		& > .btn-text,
-		& > .btn-active-text {
-			@apply hidden;
-		}
-
-		& > .btn-hover-focus-text {
-			@apply block;
-		}
-	}
-
-	&:active {
-		& > .btn-text,
-		& > .btn-hover-focus-text {
-			@apply hidden;
-		}
-
-		& > .btn-active-text {
-			@apply block;
-		}
-	}
+.btn-action span {
+	@apply relative z-20;
 }

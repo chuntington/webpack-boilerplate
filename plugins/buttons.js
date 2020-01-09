@@ -8,199 +8,42 @@ module.exports = function({ addComponents, theme }) {
 	const lineHeight = theme('lineHeight', {});
 	const padding = theme('padding', {});
 
-	const buttons = {
-		'black': {
+	const makeBtn = function(
+		base = '',
+		shades = [],
+		text = ''
+	) {
+		return {
 			'bg': {
-				'color': colors['black'],
-				'hover': colors['black'],
-				'focus': colors['black'],
-				'active': colors['black'],
-				'disabled': colors['black']
+				'color': (shades === null) ? colors[base] : colors[base][shades[0]],
+				'hover': (shades === null) ? colors[base] : colors[base][shades[1]],
+				'focus': (shades === null) ? colors[base] : colors[base][shades[2]],
+				'active': (shades === null) ? colors[base] : colors[base][shades[3]],
+				'disabled': (shades === null) ? colors[base] : colors[base][shades[4]]
 			},
 			'text': {
-				'color': colors['white'],
-				'hover': colors['white'],
-				'focus': colors['white'],
-				'active': colors['white'],
-				'disabled': colors['white']
-			}
-		},
-		'white': {
-			'bg': {
-				'color': colors['white'],
-				'hover': colors['white'],
-				'focus': colors['white'],
-				'active': colors['white'],
-				'disabled': colors['white']
-			},
-			'text': {
-				'color': colors['black'],
-				'hover': colors['black'],
-				'focus': colors['black'],
-				'active': colors['black'],
-				'disabled': colors['black']
-			}
-		},
-		'gray': {
-			'bg': {
-				'color': colors['gray']['500'],
-				'hover': colors['gray']['600'],
-				'focus': colors['gray']['600'],
-				'active': colors['gray']['700'],
-				'disabled': colors['gray']['300']
-			},
-			'text': {
-				'color': colors['white'],
-				'hover': colors['white'],
-				'focus': colors['white'],
-				'active': colors['white'],
-				'disabled': colors['white']
-			}
-		},
-		'red': {
-			'bg': {
-				'color': colors['red']['500'],
-				'hover': colors['red']['600'],
-				'focus': colors['red']['600'],
-				'active': colors['red']['700'],
-				'disabled': colors['red']['300']
-			},
-			'text': {
-				'color': colors['white'],
-				'hover': colors['white'],
-				'focus': colors['white'],
-				'active': colors['white'],
-				'disabled': colors['white']
-			}
-		},
-		'orange': {
-			'bg': {
-				'color': colors['orange']['500'],
-				'hover': colors['orange']['600'],
-				'focus': colors['orange']['600'],
-				'active': colors['orange']['700'],
-				'disabled': colors['orange']['300']
-			},
-			'text': {
-				'color': colors['white'],
-				'hover': colors['white'],
-				'focus': colors['white'],
-				'active': colors['white'],
-				'disabled': colors['white']
-			}
-		},
-		'yellow': {
-			'bg': {
-				'color': colors['yellow']['500'],
-				'hover': colors['yellow']['600'],
-				'focus': colors['yellow']['600'],
-				'active': colors['yellow']['700'],
-				'disabled': colors['yellow']['300']
-			},
-			'text': {
-				'color': colors['white'],
-				'hover': colors['white'],
-				'focus': colors['white'],
-				'active': colors['white'],
-				'disabled': colors['white']
-			}
-		},
-		'green': {
-			'bg': {
-				'color': colors['green']['500'],
-				'hover': colors['green']['600'],
-				'focus': colors['green']['600'],
-				'active': colors['green']['700'],
-				'disabled': colors['green']['300']
-			},
-			'text': {
-				'color': colors['white'],
-				'hover': colors['white'],
-				'focus': colors['white'],
-				'active': colors['white'],
-				'disabled': colors['white']
-			}
-		},
-		'teal': {
-			'bg': {
-				'color': colors['teal']['500'],
-				'hover': colors['teal']['600'],
-				'focus': colors['teal']['600'],
-				'active': colors['teal']['700'],
-				'disabled': colors['teal']['300']
-			},
-			'text': {
-				'color': colors['white'],
-				'hover': colors['white'],
-				'focus': colors['white'],
-				'active': colors['white'],
-				'disabled': colors['white']
-			}
-		},
-		'blue': {
-			'bg': {
-				'color': colors['blue']['500'],
-				'hover': colors['blue']['600'],
-				'focus': colors['blue']['600'],
-				'active': colors['blue']['700'],
-				'disabled': colors['blue']['300']
-			},
-			'text': {
-				'color': colors['white'],
-				'hover': colors['white'],
-				'focus': colors['white'],
-				'active': colors['white'],
-				'disabled': colors['white']
-			}
-		},
-		'indigo': {
-			'bg': {
-				'color': colors['indigo']['500'],
-				'hover': colors['indigo']['600'],
-				'focus': colors['indigo']['600'],
-				'active': colors['indigo']['700'],
-				'disabled': colors['indigo']['300']
-			},
-			'text': {
-				'color': colors['white'],
-				'hover': colors['white'],
-				'focus': colors['white'],
-				'active': colors['white'],
-				'disabled': colors['white']
-			}
-		},
-		'purple': {
-			'bg': {
-				'color': colors['purple']['500'],
-				'hover': colors['purple']['600'],
-				'focus': colors['purple']['600'],
-				'active': colors['purple']['700'],
-				'disabled': colors['purple']['300']
-			},
-			'text': {
-				'color': colors['white'],
-				'hover': colors['white'],
-				'focus': colors['white'],
-				'active': colors['white'],
-				'disabled': colors['white']
-			}
-		},
-		'pink': {
-			'bg': {
-				'color': colors['pink']['500'],
-				'hover': colors['pink']['600'],
-				'focus': colors['pink']['600'],
-				'active': colors['pink']['700'],
-				'disabled': colors['pink']['300']
-			},
-			'text': {
-				'color': colors['white'],
-				'hover': colors['white'],
-				'focus': colors['white'],
-				'active': colors['white'],
-				'disabled': colors['white']
+				'color': colors[text],
+				'hover': colors[text],
+				'focus': colors[text],
+				'active': colors[text],
+				'disabled': colors[text]
 			}
 		}
+	};
+
+	const buttons = {
+		'black': makeBtn('black', null, 'white'),
+		'white': makeBtn('white', null, 'black'),
+		'gray': makeBtn('gray', [500, 600, 600, 700, 300], 'white'),
+		'red': makeBtn('red', [500, 600, 600, 700, 300], 'white'),
+		'orange': makeBtn('orange', [500, 600, 600, 700, 300], 'white'),
+		'yellow': makeBtn('yellow', [500, 600, 600, 700, 300], 'white'),
+		'green': makeBtn('green', [500, 600, 600, 700, 300], 'white'),
+		'teal': makeBtn('teal', [500, 600, 600, 700, 300], 'white'),
+		'blue': makeBtn('blue', [500, 600, 600, 700, 300], 'white'),
+		'indigo': makeBtn('indigo', [500, 600, 600, 700, 300], 'white'),
+		'purple': makeBtn('teal', [500, 600, 600, 700, 300], 'white'),
+		'pink': makeBtn('pink', [500, 600, 600, 700, 300], 'white')
 	};
 
 	addComponents([
@@ -232,7 +75,7 @@ module.exports = function({ addComponents, theme }) {
 				'padding': padding['6'] + ' ' + padding['12']
 			}
 		},
-		Object.keys(buttons).map(key => ({
+		Object.keys(buttons).map((key) => ({
 			[`.btn-${key}`]: {
 				'backgroundColor': buttons[key].bg.color,
 				'color': buttons[key].text.color,
