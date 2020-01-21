@@ -1,5 +1,8 @@
 module.exports = function({ addUtilities }) {
 	addUtilities({
+		'.rotate-0': {
+			'transform': 'rotate(0deg)'
+		},
 		'.rotate-90': {
 			'transform': 'rotate(90deg)'
 		},

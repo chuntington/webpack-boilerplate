@@ -11,7 +11,7 @@ module.exports = function({ addUtilities, theme }) {
 			'fontWeight': fontWeight['bold']
 		},
 		'h1, .h1': {
-			'fontSize': fontSize['3xl'],
+			'fontSize': fontSize['4xl'],
 			'lineHeight': lineHeight['tight']
 		},
 		'h2, .h2': {
