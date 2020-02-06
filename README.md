@@ -44,17 +44,20 @@ Build your project once, or build on save:
 
 The generated bundle will be placed inside the `/dist` directory.
 
-### Using SPA Frameworks
+## Installing a framework
 
-Below is an example of a [Vue.js](https://vuejs.org/) implementation, along with `.vue` [template](https://github.com/vuejs/vue/tree/dev/packages/vue-template-compiler) [support](https://github.com/vuejs/vue-loader).
+*Note: When using styled components, the extracted CSS is likely to be invalid according to the default StyleLint rules. Revise the linting rules in `stylelint.config.js` to accommodate your situation or disable linting completely in `postcss.config.js`.*
+
+### VueJS
+Below is an example of a [Vue.js](https://github.com/vuejs/vue) implementation, along with `.vue` [template](https://github.com/vuejs/vue/tree/dev/packages/vue-template-compiler) [support](https://github.com/vuejs/vue-loader).
 
 In your terminal:
 
 ```shell
-> npm install vue vue-loader vue-template-compiler --save-dev
+> npm install vue vue-loader vue-template-compiler --save
 ```
 
-In `webpack.config.js`, import and assign appropriate loaders:
+In `webpack.config.js`, import and assign appropriate loaders and plugins:
 
 ```javascript
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
@@ -71,11 +74,13 @@ module.exports = {
                     'vue-style-loader',
                     // ...
                 ]
-            }
+            },
+            // ...
         ]
     },
     plugins: [
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        // ...
     ],
     // Override the alias for template interpolation
     resolve: {
@@ -86,18 +91,18 @@ module.exports = {
 }
 ```
 
-In `postcss.config.js`, inform Purgecss about any `.vue` templates:
+In `postcss.config.js`, inform Purgecss of any `.vue` templates:
 
 ```javascript
 Purgecss({
     content: [
-        // Scan any folder inside /src/js
-        './src/js/**/*.vue'
+        './src/js/**/*.vue',
+        // ...
     ]
 })
 ```
 
-In `src/components/ExampleComponent.vue`, create a single-file component template:
+In `src/js/components/ExampleComponent.vue`, create an example styled component template:
 
 ```vue
 <template>
@@ -123,7 +128,7 @@ In `src/components/ExampleComponent.vue`, create a single-file component templat
 </style>
 ```
 
-In `src/index.html`, create the app container:
+In `src/index.html`, declare an app container with the example component nested inside:
 
 ```html
 <body class="antialiased">
@@ -133,7 +138,7 @@ In `src/index.html`, create the app container:
 </body>
 ```
 
-In `src/main.js`, import and instantiate:
+In `src/js/main.js`, import the framework and example component, and initiate a new app instance:
 
 ```javascript
 import ExampleComponent from './components/ExampleComponent.vue';
@@ -142,6 +147,97 @@ import Vue from 'vue';
 const vm = new Vue({ components: { ExampleComponent } });
 
 vm.$mount('#app');
+```
+
+### SvelteJS
+Below is an example of a [Svelte.js](https://github.com/sveltejs/svelte) implementation utilizing `.svelte` templates.
+
+In your terminal:
+
+```shell
+> npm install svelte svelte-loader --save
+```
+
+In `webpack.config.js`, assign the appropriate loader and resolve configuration:
+
+```javascript
+module.exports = {
+    module: {
+        rules: [
+            {
+                test: /\.svelte$/,
+                use: {
+                    loader: 'svelte-loader',
+                    options: {
+                        emitCss: true
+                    }
+                }
+            },
+            // ...
+        ]
+    },
+    resolve: {
+        alias: {
+            svelte: Path.resolve('node_modules', 'svelte')
+        },
+        extensions: ['.mjs', '.js', '.svelte'],
+        mainFields: ['svelte', 'browser', 'module', 'main']
+    }
+}
+```
+
+In `postcss.config.js`, inform Purgecss of any `.svelte` templates:
+
+```javascript
+Purgecss({
+    content: [
+        './src/js/**/*.svelte',
+        // ...
+    ]
+})
+```
+
+In `src/js/components/App.svelte`, create an example styled component template:
+
+```svelte
+<script>
+    import { onMount } from 'svelte';
+
+    export let name;
+
+    onMount(() => {
+        console.log(`${name} mounted.`);
+    });
+</script>
+
+<h1 class="example">{name}</h1>
+
+<style>
+    .example {
+        color: gray;
+    }
+</style>
+```
+
+In `src/index.html`, declare the component container:
+
+```html
+<body class="antialiased">
+    <div id="app"></div>
+</body>
+```
+
+In `src/js/main.js`, import the component and initiate a new instance:
+
+```javascript
+import App from './components/App.svelte';
+
+const app = new App({
+    target: document.getElementById('app'),
+    props: { name: 'Example App' }
+});
+
+window.app = app;
 ```
 
 🎩 **Voila!**
