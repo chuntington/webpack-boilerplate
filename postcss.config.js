@@ -15,6 +15,15 @@ module.exports = {
 			configFile: './stylelint.config.js'
 		}),
 		Tailwindcss('./tailwindcss.config.js'),
+		EasingGradients({
+			alphaDecimals: 4,
+			colorMode: 'lrgb',
+			colorStops: 12
+		}),
+		FontMagician({
+			display: 'swap',
+			foundries: ['google']
+		}),
 		PostcssPresetEnv({
 			autoprefixer: {
 				grid: true
@@ -26,15 +35,6 @@ module.exports = {
 				},
 				'nesting-rules': true
 			}
-		}),
-		EasingGradients({
-			alphaDecimals: 4,
-			colorMode: 'lrgb',
-			colorStops: 12
-		}),
-		FontMagician({
-			display: 'swap',
-			foundries: ['google']
 		}),
 		(!DevMode)
 			? Purgecss({

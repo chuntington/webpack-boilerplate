@@ -1,3 +1,4 @@
+/* autoprefixer grid: off */
 @tailwind base;
 @tailwind components;
 
@@ -48,8 +49,8 @@ body {
 	color: var(--opaque-black);
 
 	/*
-	 * FontMagician imports the font below automatically (only if it's used in
-	 * a selector) from the defined 'foundries' in the plugin's configuration.
+	 * If this class is used, FontMagician imports the font below automatically
+	 * from the defined 'foundries' in the plugin's configuration.
 	 *
 	 * Most fonts are defined within the Tailwind configuration and will be
 	 * automatically imported if needed. The rule below exists only to
