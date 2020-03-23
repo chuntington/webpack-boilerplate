@@ -20,10 +20,6 @@ module.exports = {
 			colorMode: 'lrgb',
 			colorStops: 12
 		}),
-		FontMagician({
-			display: 'swap',
-			foundries: ['google']
-		}),
 		PostcssPresetEnv({
 			autoprefixer: {
 				grid: true
@@ -35,6 +31,10 @@ module.exports = {
 				},
 				'nesting-rules': true
 			}
+		}),
+		FontMagician({
+			display: 'swap',
+			foundries: ['google']
 		}),
 		(!DevMode)
 			? Purgecss({

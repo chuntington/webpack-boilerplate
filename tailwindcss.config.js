@@ -13,6 +13,7 @@ module.exports = {
 		require('./plugins/labels.js'),
 		require('./plugins/layout.js'),
 		require('./plugins/rotations.js'),
+		require('./plugins/scrolls.js'),
 	],
 	'prefix': '',
 	'separator': ':',
@@ -25,10 +26,8 @@ module.exports = {
 		},
 		'colors': {
 			'transparent': 'transparent',
-
 			'black': '#000',
 			'white': '#fff',
-
 			'gray': {
 				'100': '#f7fafc',
 				'200': '#edf2f7',
@@ -161,7 +160,7 @@ module.exports = {
 			'56': '14rem',
 			'64': '16rem',
 		},
-		backgroundColor: theme => theme('colors'),
+		'backgroundColor': theme => theme('colors'),
 		'backgroundPosition': {
 			'bottom': 'bottom',
 			'center': 'center',
@@ -178,7 +177,7 @@ module.exports = {
 			'cover': 'cover',
 			'contain': 'contain',
 		},
-		borderColor: theme => ({
+		'borderColor': theme => ({
 			...theme('colors'),
 			'default': theme('colors.gray.300', 'currentColor'),
 		}),
@@ -288,7 +287,57 @@ module.exports = {
 			'extrabold': '800',
 			'black': '900',
 		},
-		height: theme => ({
+		'gradients': theme => ({
+			'black-white': [
+				theme('colors.black'),
+				theme('colors.white')
+			],
+			'black-gray': [
+				theme('colors.black'),
+				theme('colors.gray.500')
+			],
+			'white-black': [
+				theme('colors.white'),
+				theme('colors.black')
+			],
+			'white-gray': [
+				theme('colors.white'),
+				theme('colors.gray.500')
+			],
+			'red-orange': [
+				theme('colors.red.500'),
+				theme('colors.orange.500')
+			],
+			'orange-yellow': [
+				theme('colors.orange.500'),
+				theme('colors.yellow.500')
+			],
+			'yellow-green': [
+				theme('colors.yellow.500'),
+				theme('colors.green.500')
+			],
+			'green-teal': [
+				theme('colors.green.500'),
+				theme('colors.teal.500')
+			],
+			'teal-blue': [
+				theme('colors.teal.500'),
+				theme('colors.blue.500')
+			],
+			'blue-indigo': [
+				theme('colors.blue.500'),
+				theme('colors.indigo.500')
+			],
+			'indigo-purple': [
+				theme('colors.indigo.500'),
+				theme('colors.purple.500')
+			],
+			'purple-pink': [
+				theme('colors.purple.500'),
+				theme('colors.pink.500')
+			]
+		}),
+		'height': theme => ({
 			'auto': 'auto',
 			...theme('spacing'),
 			'full': '100%',
@@ -320,7 +369,7 @@ module.exports = {
 			'disc': 'disc',
 			'decimal': 'decimal',
 		},
-		margin: (theme, { negative }) => ({
+		'margin': (theme, { negative }) => ({
 			'auto': 'auto',
 			...theme('spacing'),
 			...negative(theme('spacing')),
@@ -387,11 +436,42 @@ module.exports = {
 			'12': '12',
 		},
 		'padding': theme => theme('spacing'),
+		'scrollSnap': {
+			'alignments': {
+				'center': 'center',
+				'end': 'end',
+				'inherit': 'inherit',
+				'initial': 'initial',
+				'none': 'none',
+				'start': 'start',
+				'unset': 'unset',
+			},
+			'stops': {
+				'always': 'always',
+				'normal': 'normal',
+			},
+			'types': {
+				'block': 'block',
+				'inline': 'inline',
+				'inherit': 'inherit',
+				'initial': 'initial',
+				'none': 'none',
+				'unset': 'unset',
+				'both': 'both',
+				'both mandatory': 'both mandatory',
+				'x': 'x',
+				'x-mandatory': 'x mandatory',
+				'x-proximity': 'x proximity',
+				'y': 'y',
+				'y-mandatory': 'y mandatory',
+				'y-proximity': 'y proximity',
+			}
+		},
 		'stroke': {
 			'current': 'currentColor',
 		},
 		'textColor': theme => theme('colors'),
-		width: theme => ({
+		'width': theme => ({
 			'auto': 'auto',
 			...theme('spacing'),
 			'1/2': '50%',
@@ -438,6 +518,7 @@ module.exports = {
 		'alignItems': ['responsive'],
 		'alignSelf': ['responsive'],
 		'appearance': ['responsive'],
+		'aspectRatios': ['responsive'],
 		'backgroundAttachment': ['responsive'],
 		'backgroundColor': ['responsive', 'hover', 'focus'],
 		'backgroundPosition': ['responsive'],
@@ -486,6 +567,8 @@ module.exports = {
 		'pointerEvents': ['responsive'],
 		'position': ['responsive'],
 		'resize': ['responsive'],
+		'rotations': ['responsive', 'hover', 'focus'],
+		'scrolls': ['responsive'],
 		'stroke': ['responsive'],
 		'tableLayout': ['responsive'],
 		'textAlign': ['responsive'],

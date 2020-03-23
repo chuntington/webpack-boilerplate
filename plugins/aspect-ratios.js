@@ -1,4 +1,4 @@
-module.exports = function({ addUtilities }) {
+module.exports = function({ addUtilities, variants }) {
 	addUtilities([
 		{
 			'.aspect-ratio-square': {
@@ -17,5 +17,5 @@ module.exports = function({ addUtilities }) {
 				'paddingTop': '42.86%'
 			}
 		}
-	]);
+	], variants('aspectRatios'));
 };
