@@ -46,7 +46,7 @@ The generated bundle will be placed inside the `/dist` directory.
 
 ## Installing a framework
 
-*Note: When using styled components, the extracted CSS is likely to be invalid according to the default StyleLint rules. Revise the linting rules in `stylelint.config.js` to accommodate your situation or disable linting completely in `postcss.config.js`.*
+*Note: When using styled components, the extracted CSS is likely to be invalid according to the default StyleLint rules. Modify the linting rules in `stylelint.config.js` to accommodate your situation or disable linting completely in `postcss.config.js`. It may also be helpful to modify or temporarily disable linting rules in `eslint.config.js` when utilizing any of the below frameworks.*
 
 ### VueJS
 Below is an example of a [Vue.js](https://github.com/vuejs/vue) implementation, along with `.vue` [template](https://github.com/vuejs/vue/tree/dev/packages/vue-template-compiler) [support](https://github.com/vuejs/vue-loader).
@@ -238,6 +238,85 @@ const app = new App({
 });
 
 window.app = app;
+```
+
+### ReactJS
+Below is an example of a [React.js](https://github.com/facebook/react) implementation.
+
+In your terminal:
+
+```shell
+> npm install @babel/preset-react eslint-plugin-react react react-dom --save
+```
+
+In `babel.config.js`, assign the preset:
+
+```javascript
+module.exports = function(api) {
+    // ...
+
+    return {
+        presets: ['@babel/preset-env', '@babel/preset-react'],
+        // ...
+    };
+};
+```
+
+In `eslint.config.js`, enable the appropriate parser options and plugin:
+
+```javascript
+module.exports = {
+    parserOptions: {
+        'ecmaFeatures': {
+            'jsx': true
+        },
+        // ...
+    },
+    plugins: ['react'],
+    // ...
+}
+```
+
+In `src/js/components/ExampleComponent.js`, create an example component template:
+
+```javascript
+import React from 'react';
+
+class ExampleComponent extends React.Component {
+    render() {
+        return <h1>Example Component</h1>;
+    }
+
+    componentDidMount() {
+        console.log('Example component mounted.');
+    }
+}
+
+export default ExampleComponent;
+```
+
+In `src/index.html`, declare an app container:
+
+```html
+<body class="antialiased">
+    <div id="app"></div>
+</body>
+```
+
+In `src/js/main.js`, import the framework and example component, and initiate a new app instance:
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ExampleComponent from './components/ExampleComponent.js';
+
+class App extends React.Component {
+    render() {
+        return <ExampleComponent/>;
+    }
+}
+
+ReactDOM.render(<App/>, document.getElementById('app'));
 ```
 
 🎩 **Voila!**
