@@ -42,7 +42,7 @@ module.exports = function({ addUtilities, theme, variants }) {
 		'teal': generateButton('teal', [500, 600, 600, 700, 300], 'white'),
 		'blue': generateButton('blue', [500, 600, 600, 700, 300], 'white'),
 		'indigo': generateButton('indigo', [500, 600, 600, 700, 300], 'white'),
-		'purple': generateButton('teal', [500, 600, 600, 700, 300], 'white'),
+		'purple': generateButton('purple', [500, 600, 600, 700, 300], 'white'),
 		'pink': generateButton('pink', [500, 600, 600, 700, 300], 'white')
 	};
 
