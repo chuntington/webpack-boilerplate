@@ -1,6 +1,7 @@
 module.exports = {
 	'corePlugins': {},
 	'important': false,
+	'purge': false,
 	'plugins': [
 		require('./plugins/aspect-ratios.js'),
 		require('./plugins/buttons.js'),

@@ -57,7 +57,10 @@ module.exports = function({ addUtilities, theme, variants }) {
 				'lineHeight': lineHeight['none'],
 				'padding': padding['4'] + ' ' + padding['8'],
 				'textAlign': 'center',
-				'whiteSpace': 'nowrap'
+				'whiteSpace': 'nowrap',
+				'&:disabled': {
+					'cursor': 'not-allowed'
+				}
 			},
 			'.btn-sm': {
 				'borderRadius': borderRadius['sm'],

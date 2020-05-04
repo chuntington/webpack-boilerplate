@@ -24,6 +24,10 @@ module.exports = function({ addComponents, theme }) {
 			'&:focus': {
 				'outline': 'none',
 			},
+			'&:disabled': {
+				'color': colors['gray']['500'],
+				'cursor': 'not-allowed'
+			},
 			'&.error': {
 				'boxShadow': 'inset 0 0 0 2px ' + colors['red']['500'],
 				'color': colors['red']['500'],
