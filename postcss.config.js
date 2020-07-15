@@ -2,6 +2,7 @@ const Autoprefixer = require('autoprefixer');
 const CssNano = require('cssnano');
 const EasingGradients = require('postcss-easing-gradients');
 const FontMagician = require('postcss-font-magician');
+const PostcssAdvancedVariables = require('postcss-advanced-variables');
 const PostcssPresetEnv = require('postcss-preset-env');
 const Purgecss = require('@fullhuman/postcss-purgecss');
 const StyleLint = require('stylelint');
@@ -15,11 +16,7 @@ module.exports = {
 			configFile: './stylelint.config.js'
 		}),
 		Tailwindcss('./tailwindcss.config.js'),
-		EasingGradients({
-			alphaDecimals: 4,
-			colorMode: 'lrgb',
-			colorStops: 12
-		}),
+		PostcssAdvancedVariables(),
 		PostcssPresetEnv({
 			autoprefixer: {
 				grid: true
@@ -31,6 +28,11 @@ module.exports = {
 				},
 				'nesting-rules': true
 			}
+		}),
+		EasingGradients({
+			alphaDecimals: 4,
+			colorMode: 'lrgb',
+			colorStops: 12
 		}),
 		FontMagician({
 			display: 'swap',

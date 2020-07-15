@@ -1,14 +1,14 @@
 /*
  * This pattern looks for any set of a-z characters, followed by a hyphen (-)
- * and any set of a-z characters, including 0-9 numbers.
+ * and any set of a-z characters, including 0-9 numbers and the $ symbol.
  */
-const ClassPattern = '^[a-z]+(-[a-z0-9]+)*$';
+const ClassPattern = '^[a-z]+(-[$a-z0-9]+)*$';
 
 /*
  * This pattern looks for any set of a-z characters, followed by any set of A-Z
- * characters, including 0-9 numbers.
+ * characters, including 0-9 numbers and the $ symbol.
  */
-const KeyframePattern = '^[a-z][a-zA-Z0-9]+$';
+const KeyframePattern = '^[a-z][$a-zA-Z0-9]+$';
 
 module.exports = {
 	'rules': {
@@ -26,6 +26,14 @@ module.exports = {
 			true, {
 				'ignoreAtRules': [
 					'apply',
+					'content',
+					'each',
+					'else',
+					'for',
+					'if',
+					'import',
+					'include',
+					'mixin',
 					'tailwind',
 					'variants'
 				]

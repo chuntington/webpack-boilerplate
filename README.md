@@ -7,6 +7,7 @@ For the **beehive**:
 - [TailwindCSS](https://github.com/tailwindcss/tailwindcss) *(Utility framework)*
 - [Autoprefixer](https://github.com/postcss/autoprefixer) *(Prefixing for target browsers)*
 - [FontMagician](https://github.com/jonathantneal/postcss-font-magician) *(Generating @font-face rules)*
+- [AdvancedVariables](https://github.com/jonathantneal/postcss-advanced-variables) *(Variables, conditionals and loops)*
 - [EasingGradients](https://github.com/larsenwork/postcss-easing-gradients) *(Generating eased gradients)*
 - [CSSNano](https://github.com/cssnano/cssnano) *(Compressing and minifying)*
 - [PurgeCSS](https://github.com/FullHuman/postcss-purgecss) *(Removing unused styles)*
@@ -27,7 +28,7 @@ To get started, clone the project and install the dependencies:
 > npm install
 ```
 
-Create a `.env` file in the root directory and specify your build environment:
+Create a `.env` file in the root directory and specify the build environment inside:
 
 ```
 NODE_ENV=development
@@ -35,7 +36,7 @@ NODE_ENV=development
 NODE_ENV=production
 ```
 
-Build your project once, or build on save:
+In the terminal, build the project once, or build on save:
 
 ```shell
 > npm run build
@@ -51,7 +52,7 @@ The generated bundle will be placed inside the `/dist` directory.
 ### VueJS
 Below is an example of a [Vue.js](https://github.com/vuejs/vue) implementation, along with `.vue` [template](https://github.com/vuejs/vue/tree/dev/packages/vue-template-compiler) [support](https://github.com/vuejs/vue-loader).
 
-In your terminal:
+In the terminal:
 
 ```shell
 > npm install vue vue-loader vue-template-compiler --save
@@ -152,7 +153,7 @@ vm.$mount('#app');
 ### SvelteJS
 Below is an example of a [Svelte.js](https://github.com/sveltejs/svelte) implementation utilizing `.svelte` templates.
 
-In your terminal:
+In the terminal:
 
 ```shell
 > npm install svelte svelte-loader --save
@@ -243,7 +244,7 @@ window.app = app;
 ### ReactJS
 Below is an example of a [React.js](https://github.com/facebook/react) implementation.
 
-In your terminal:
+In the terminal:
 
 ```shell
 > npm install @babel/preset-react eslint-plugin-react react react-dom --save

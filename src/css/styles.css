@@ -49,8 +49,8 @@ body {
 	color: var(--opaque-black);
 
 	/*
-	 * If this class is used, FontMagician imports the font below automatically
-	 * from the defined 'foundries' in the plugin's configuration.
+	 * If this class appears on a page, FontMagician will attempt to import the
+	 * font from the defined 'foundries' in the plugin's configuration.
 	 *
 	 * Most fonts are defined within the Tailwind configuration and will be
 	 * automatically imported if needed. The rule below exists only to
@@ -62,8 +62,8 @@ body {
 	 * FontMagician won't import the font weight below due to the strict
 	 * 'variants' definitions in the plugin's configuration.
 	 *
-	 * Removing all 'variants' definitions will enable every available weight
-	 * to be imported (if used within a selector).
+	 * Removing all 'variants' definitions will result in every available
+	 * weight being imported (if used within a selector).
 	 */
 	font-weight: var(--custom-header-font-weight);
 
