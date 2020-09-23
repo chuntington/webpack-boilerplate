@@ -3,6 +3,7 @@ const CssNano = require('cssnano');
 const EasingGradients = require('postcss-easing-gradients');
 const FontMagician = require('postcss-font-magician');
 const PostcssAdvancedVariables = require('postcss-advanced-variables');
+const PostcssImport = require('postcss-import');
 const PostcssPresetEnv = require('postcss-preset-env');
 const Purgecss = require('@fullhuman/postcss-purgecss');
 const StyleLint = require('stylelint');
@@ -15,6 +16,7 @@ module.exports = {
 		StyleLint({
 			configFile: './stylelint.config.js'
 		}),
+		PostcssImport(),
 		Tailwindcss('./tailwindcss.config.js'),
 		PostcssAdvancedVariables(),
 		PostcssPresetEnv({

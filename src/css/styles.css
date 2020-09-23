@@ -1,6 +1,16 @@
 /* autoprefixer grid: off */
-@tailwind base;
-@tailwind components;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+
+/*
+ * Example components using Tailwind's component extraction method. Components
+ * should always be defined before importing Tailwind's utilities.
+ *
+ * Base components can be extended via JavaScript plugins. It is recommended to
+ * refactor components and utilities to a plugin where possible.
+ */
+@import "./btn-action.css";
+@import "tailwindcss/utilities";
 
 /*
  * PostcssPresetEnv allows us to use staged, proposed and approved CSS features
@@ -12,7 +22,7 @@
 :root {
 	--custom-header-font-family: "Permanent Marker", sans-serif;
 	--custom-header-font-weight: 800;
-	--opaque-black: color-mod(theme("colors.black") alpha(80%));
+	--opaque-white: color-mod(theme("colors.white") alpha(90%));
 }
 
 body {
@@ -34,19 +44,10 @@ body {
 	}
 }
 
-/*
- * Example components using Tailwind's component extraction method. Components
- * should always be defined before importing Tailwind's utilities.
- *
- * Base components can be extended via JavaScript plugins. It is recommended to
- * refactor components and utilities to a plugin where possible.
- */
-@import "./btn-action.css";
-
 .custom-header {
 	@apply pr-4 relative text-5xl;
 
-	color: var(--opaque-black);
+	color: var(--opaque-white);
 
 	/*
 	 * If this class appears on a page, FontMagician will attempt to import the
@@ -91,5 +92,3 @@ body {
 		width: 1rem;
 	}
 }
-
-@tailwind utilities;
