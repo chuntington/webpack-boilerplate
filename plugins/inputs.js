@@ -21,12 +21,12 @@ module.exports = function({ addComponents, theme }) {
 			'lineHeight': lineHeight['tight'],
 			'padding': padding['3'] + ' ' + padding['4'],
 			'width': width['full'],
-			'&:focus': {
-				'outline': 'none',
-			},
 			'&:disabled': {
 				'color': colors['gray']['500'],
 				'cursor': 'not-allowed'
+			},
+			'&:focus': {
+				'outline': 'none'
 			},
 			'&.error': {
 				'boxShadow': 'inset 0 0 0 2px ' + colors['red']['500'],
@@ -47,7 +47,7 @@ module.exports = function({ addComponents, theme }) {
 			'pointer-events': 'none',
 			'position': 'absolute',
 			'right': '0',
-			'top': '0',
+			'top': '0'
 		}
 	});
 };
