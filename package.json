@@ -1,6 +1,6 @@
 {
 	"name": "webpack-boilerplate",
-	"version": "0.2.8",
+	"version": "0.2.9",
 	"author": "Cameron Huntington",
 	"description": "A simple-ish webpack setup for generating static websites.",
 	"license": "MIT",

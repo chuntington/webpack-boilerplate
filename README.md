@@ -6,6 +6,7 @@ For the **beehive**:
 
 - [TailwindCSS](https://github.com/tailwindcss/tailwindcss) *(Utility framework)*
 - [Autoprefixer](https://github.com/postcss/autoprefixer) *(Prefixing for target browsers)*
+- [Import](https://github.com/postcss/postcss-import) *(Inlining import at-rules)*
 - [FontMagician](https://github.com/jonathantneal/postcss-font-magician) *(Generating @font-face rules)*
 - [AdvancedVariables](https://github.com/jonathantneal/postcss-advanced-variables) *(Variables, conditionals and loops)*
 - [EasingGradients](https://github.com/larsenwork/postcss-easing-gradients) *(Generating eased gradients)*
