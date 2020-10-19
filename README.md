@@ -1,6 +1,8 @@
 # Webpack Boilerplate
 
-A simple-ish Webpack setup utilizing modern features and frameworks for generating static web pages.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) ![David](https://img.shields.io/david/dev/chuntington/webpack-boilerplate)
+
+Starter Webpack (5) boilerplate with modern features and frameworks for generating static web pages.
 
 For the **beehive**:
 
@@ -42,6 +44,12 @@ In the terminal, build the project once, or build on save:
 ```shell
 > npm run build
 > npm run watch
+```
+
+If you need a web server, the following will start one locally and build on save:
+
+```shell
+> npm run serve
 ```
 
 The generated bundle will be placed inside the `/dist` directory.

@@ -65,9 +65,9 @@ module.exports = {
 		]
 	},
 	optimization: {
+		minimize: !DevMode,
 		minimizer: [
 			new TerserPlugin({
-				cache: true,
 				parallel: true,
 				test: /\.js(\?.*)?$/i
 			})
