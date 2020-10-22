@@ -2,13 +2,13 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) ![David](https://img.shields.io/david/dev/chuntington/webpack-boilerplate)
 
-Starter Webpack (5) boilerplate with modern features and frameworks for generating static web pages.
+A starter Webpack (5) boilerplate for generating static web pages.
 
 For the **beehive**:
 
 - [TailwindCSS](https://github.com/tailwindcss/tailwindcss) *(Utility framework)*
 - [Autoprefixer](https://github.com/postcss/autoprefixer) *(Prefixing for target browsers)*
-- [Import](https://github.com/postcss/postcss-import) *(Inlining import at-rules)*
+- [Import](https://github.com/postcss/postcss-import) *(Inlining @import rules)*
 - [FontMagician](https://github.com/jonathantneal/postcss-font-magician) *(Generating @font-face rules)*
 - [AdvancedVariables](https://github.com/jonathantneal/postcss-advanced-variables) *(Variables, conditionals and loops)*
 - [EasingGradients](https://github.com/larsenwork/postcss-easing-gradients) *(Generating eased gradients)*
@@ -58,8 +58,8 @@ The generated bundle will be placed inside the `/dist` directory.
 
 *Note: When using styled components, the extracted CSS is likely to be invalid according to the default StyleLint rules. Modify the linting rules in `stylelint.config.js` to accommodate your situation or disable linting completely in `postcss.config.js`. It may also be helpful to modify or temporarily disable linting rules in `eslint.config.js` when utilizing any of the below frameworks.*
 
-### VueJS
-Below is an example of a [Vue.js](https://github.com/vuejs/vue) implementation, along with `.vue` [template](https://github.com/vuejs/vue/tree/dev/packages/vue-template-compiler) [support](https://github.com/vuejs/vue-loader).
+### VueJS (2.x)
+Below is an example of a [Vue.js](https://github.com/vuejs/vue) (2.x) implementation, along with `.vue` [template](https://github.com/vuejs/vue/tree/dev/packages/vue-template-compiler) [support](https://github.com/vuejs/vue-loader).
 
 In the terminal:
 
