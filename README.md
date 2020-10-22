@@ -159,8 +159,8 @@ const vm = new Vue({ components: { ExampleComponent } });
 vm.$mount('#app');
 ```
 
-### SvelteJS
-Below is an example of a [Svelte.js](https://github.com/sveltejs/svelte) implementation utilizing `.svelte` templates.
+### SvelteJS (3.x)
+Below is an example of a [Svelte.js](https://github.com/sveltejs/svelte) (3.x) implementation utilizing `.svelte` templates.
 
 In the terminal:
 
@@ -250,8 +250,8 @@ const app = new App({
 window.app = app;
 ```
 
-### ReactJS
-Below is an example of a [React.js](https://github.com/facebook/react) implementation.
+### ReactJS (17.x)
+Below is an example of a [React.js](https://github.com/facebook/react) (17.x) implementation.
 
 In the terminal:
 
