@@ -6,6 +6,18 @@ module.exports = {
 		removeDeprecatedGapUtilities: true,
 		purgeLayersByDefault: true
 	},
+	'plugins': [
+		plugin(require('./plugins/aspect-ratios.js')),
+		plugin(require('./plugins/buttons.js')),
+		plugin(require('./plugins/cards.js')),
+		plugin(require('./plugins/embeds.js')),
+		plugin(require('./plugins/headings.js')),
+		plugin(require('./plugins/inputs.js')),
+		plugin(require('./plugins/interactions.js')),
+		plugin(require('./plugins/labels.js')),
+		plugin(require('./plugins/layout.js')),
+		plugin(require('./plugins/scrolls.js'))
+	],
 	'purge': false,
 	'theme': {
 		'extend': {
@@ -58,17 +70,5 @@ module.exports = {
 		'display': ['responsive', 'hover', 'focus', 'group-hover', 'group-focus', 'group-active'],
 		'rotate': ['responsive', 'hover', 'focus', 'active'],
 		'textColor': ['responsive', 'hover', 'focus', 'group-hover', 'group-focus']
-	},
-	'plugins': [
-		plugin(require('./plugins/aspect-ratios.js')),
-		plugin(require('./plugins/buttons.js')),
-		plugin(require('./plugins/cards.js')),
-		plugin(require('./plugins/embeds.js')),
-		plugin(require('./plugins/headings.js')),
-		plugin(require('./plugins/inputs.js')),
-		plugin(require('./plugins/interactions.js')),
-		plugin(require('./plugins/labels.js')),
-		plugin(require('./plugins/layout.js')),
-		plugin(require('./plugins/scrolls.js'))
-	]
+	}
 };

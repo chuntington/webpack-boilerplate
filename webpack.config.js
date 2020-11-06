@@ -38,12 +38,7 @@ module.exports = {
 			}, {
 				test: /\.css$/,
 				use: [
-					{
-						loader: MiniCssExtractPlugin.loader,
-						options: {
-							hmr: DevMode
-						}
-					},
+					MiniCssExtractPlugin.loader,
 					{
 						loader: 'css-loader',
 						options: {
@@ -111,9 +106,6 @@ module.exports = {
 			},
 			template: 'src/index.html'
 		}),
-		new CompressionWebpackPlugin({
-			algorithm: 'brotliCompress',
-			compressionOptions: { level: 11 }
-		})
+		new CompressionWebpackPlugin()
 	]
 };
