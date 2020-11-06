@@ -44,7 +44,7 @@ module.exports = {
 			? Purgecss({
 				content: ['./src/index.html'],
 				defaultExtractor: (content) => content.match(/[A-Za-z0-9-_:/]+/g) || [],
-				whitelist: ['active', 'exact-active']
+				safelist: ['active', 'exact-active']
 			})
 			: '',
 		(!DevMode)
