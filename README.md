@@ -46,7 +46,7 @@ In the terminal, build the project once, or build on save:
 > npm run watch
 ```
 
-If you need a web server, the following will start one locally and build on save:
+If you need a local web server, the following will start one and build on save:
 
 ```shell
 > npm run serve
