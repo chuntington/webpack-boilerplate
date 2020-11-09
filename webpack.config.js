@@ -4,6 +4,7 @@ const Path = require('path');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
+const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -16,16 +17,6 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.js$/,
-				enforce: 'pre',
-				exclude: /node_modules/,
-				use: {
-					loader: 'eslint-loader',
-					options: {
-						configFile: './eslint.config.js'
-					}
-				}
-			}, {
 				test: /\.js$/,
 				exclude: /node_modules/,
 				use: {
@@ -85,6 +76,9 @@ module.exports = {
 	plugins: [
 		new CleanWebpackPlugin({
 			cleanOnceBeforeBuildPatterns: ['**/*']
+		}),
+		new ESLintWebpackPlugin({
+			overrideConfigFile: './eslint.config.js'
 		}),
 		new MiniCssExtractPlugin({
 			filename: (DevMode) ? '[name].css' : '[name].[hash].css',
