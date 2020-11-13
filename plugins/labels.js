@@ -4,7 +4,7 @@ module.exports = function({ addUtilities, theme }) {
 	const fontWeight = theme('fontWeight', {});
 
 	addUtilities({
-		'label': {
+		'.label': {
 			'fontFamily': fontFamily['sans'].join(','),
 			'fontSize': fontSize['xs'],
 			'fontWeight': fontWeight['bold'],

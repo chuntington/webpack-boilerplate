@@ -1,4 +1,4 @@
-module.exports = function({ addUtilities, theme, variants }) {
+module.exports = function({ addComponents, theme, variants }) {
 	const borderRadius = theme('borderRadius', {});
 	const borderWidth = theme('borderWidth', {});
 	const colors = theme('colors', {});
@@ -46,7 +46,7 @@ module.exports = function({ addUtilities, theme, variants }) {
 		'pink': generateButton('pink', [500, 600, 600, 700, 300], 'white')
 	};
 
-	addUtilities([
+	addComponents([
 		{
 			'.btn': {
 				'borderRadius': borderRadius['default'],

@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const Path = require('path');
+const ZLib = require("zlib");
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
@@ -69,8 +70,8 @@ module.exports = {
 		}
 	},
 	output: {
-		chunkFilename: (DevMode) ? '[name].js' : '[name].[hash].js',
-		filename: (DevMode) ? '[name].js' : '[name].[hash].js',
+		chunkFilename: (DevMode) ? '[name].js' : '[name].[fullhash].js',
+		filename: (DevMode) ? '[name].js' : '[name].[fullhash].js',
 		path: Path.resolve(__dirname, 'dist')
 	},
 	plugins: [
@@ -81,8 +82,8 @@ module.exports = {
 			overrideConfigFile: './eslint.config.js'
 		}),
 		new MiniCssExtractPlugin({
-			filename: (DevMode) ? '[name].css' : '[name].[hash].css',
-			chunkFilename: (DevMode) ? '[id].css' : '[id].[hash].css',
+			filename: (DevMode) ? '[name].css' : '[name].[fullhash].css',
+			chunkFilename: (DevMode) ? '[id].css' : '[id].[fullhash].css',
 		}),
 		new HtmlWebpackPlugin({
 			favicon: 'src/favicon.ico',
@@ -100,6 +101,15 @@ module.exports = {
 			},
 			template: 'src/index.html'
 		}),
-		new CompressionWebpackPlugin()
+		new CompressionWebpackPlugin({
+			filename: '[path][base].gz',
+			algorithm: 'gzip',
+			test: /\.(js|css|html)$/
+		}),
+		new CompressionWebpackPlugin({
+			filename: '[path][base].br',
+			algorithm: 'brotliCompress',
+			test: /\.(js|css|html|svg)$/
+		}),
 	]
 };
