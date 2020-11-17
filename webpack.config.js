@@ -101,15 +101,19 @@ module.exports = {
 			},
 			template: 'src/index.html'
 		}),
-		new CompressionWebpackPlugin({
-			filename: '[path][base].gz',
-			algorithm: 'gzip',
-			test: /\.(js|css|html)$/
-		}),
-		new CompressionWebpackPlugin({
-			filename: '[path][base].br',
-			algorithm: 'brotliCompress',
-			test: /\.(js|css|html|svg)$/
-		}),
+		(!DevMode)
+			? new CompressionWebpackPlugin({
+				filename: '[path][base].gz',
+				algorithm: 'gzip',
+				test: /\.(js|css|html)$/
+			})
+			: { apply() {} },
+		(!DevMode)
+			? new CompressionWebpackPlugin({
+				filename: '[path][base].br',
+				algorithm: 'brotliCompress',
+				test: /\.(js|css|html|svg)$/
+			})
+			: { apply() {} }
 	]
 };
