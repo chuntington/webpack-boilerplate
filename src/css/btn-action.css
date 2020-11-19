@@ -1,21 +1,14 @@
 .btn-action {
-	@apply relative overflow-hidden;
-
-	transition: all 150ms ease;
+	@apply relative overflow-hidden transition-all;
 
 	&:before {
-		@apply absolute h-full left-0 opacity-0 top-0 w-full z-10;
+		@apply absolute bg-center bg-x-only duration-300 h-full left-0 opacity-0 origin-center scale-x-25 top-0 transform transition-all w-full z-10;
 
-		background-position: 50% 50%;
-		background-size: 100% 0;
 		content: "";
-		transform: scale(0.25, 1);
-		transform-origin: 50% 50%;
-		transition: all 300ms ease;
 	}
 
 	&:hover:before {
-		transform: scale(1, 1);
+		@apply scale-x-100;
 	}
 
 	&.btn-outline-pink {
@@ -24,6 +17,8 @@
 		}
 
 		&:active:before {
+			@apply bg-full;
+
 			background-image:
 				radial-gradient(
 					circle at 50% 50%,
@@ -31,7 +26,6 @@
 					steps(4),
 					theme("colors.pink.600")
 				);
-			background-size: 100% 100%;
 		}
 	}
 

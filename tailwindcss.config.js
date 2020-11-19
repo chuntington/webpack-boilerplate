@@ -2,10 +2,7 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 const plugin = require('tailwindcss/plugin');
 
 module.exports = {
-	'future': {
-		removeDeprecatedGapUtilities: true,
-		purgeLayersByDefault: true
-	},
+	'darkMode': false,
 	'plugins': [
 		plugin(require('./plugins/aspect-ratios.js')),
 		plugin(require('./plugins/buttons.js')),
@@ -21,17 +18,18 @@ module.exports = {
 	'purge': false,
 	'theme': {
 		'extend': {
+			'backgroundSize': {
+				'x-only': '100% 0',
+				'full': '100% 100%'
+			},
 			'fontFamily': {
 				'sans': [
 					'"Quicksand"',
 					...defaultTheme.fontFamily.sans
 				]
 			},
-			'rotate': {
-				'10': '10deg'
-			},
-			'screens': {
-				'xxl': '1440px'
+			'scale': {
+				'25': '.25',
 			},
 			'scrollSnap': {
 				'alignments': {
@@ -67,8 +65,10 @@ module.exports = {
 		}
 	},
 	'variants': {
-		'display': ['responsive', 'hover', 'focus', 'group-hover', 'group-focus', 'group-active'],
-		'rotate': ['responsive', 'hover', 'focus', 'active'],
-		'textColor': ['responsive', 'hover', 'focus', 'group-hover', 'group-focus']
+		'extend': {
+			'display': ['responsive', 'hover', 'focus', 'group-hover', 'group-focus', 'group-active'],
+			'rotate': ['active'],
+			'textColor': ['responsive', 'hover', 'focus', 'group-hover', 'group-focus']
+		}
 	}
 };

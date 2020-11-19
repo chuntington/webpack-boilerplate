@@ -36,10 +36,8 @@ module.exports = function({ addComponents, theme, variants }) {
 		'white': generateButton('white', null, 'black'),
 		'gray': generateButton('gray', [500, 600, 600, 700, 300], 'white'),
 		'red': generateButton('red', [500, 600, 600, 700, 300], 'white'),
-		'orange': generateButton('orange', [500, 600, 600, 700, 300], 'white'),
 		'yellow': generateButton('yellow', [500, 600, 600, 700, 300], 'white'),
 		'green': generateButton('green', [500, 600, 600, 700, 300], 'white'),
-		'teal': generateButton('teal', [500, 600, 600, 700, 300], 'white'),
 		'blue': generateButton('blue', [500, 600, 600, 700, 300], 'white'),
 		'indigo': generateButton('indigo', [500, 600, 600, 700, 300], 'white'),
 		'purple': generateButton('purple', [500, 600, 600, 700, 300], 'white'),
@@ -49,7 +47,7 @@ module.exports = function({ addComponents, theme, variants }) {
 	addComponents([
 		{
 			'.btn': {
-				'borderRadius': borderRadius['default'],
+				'borderRadius': borderRadius['DEFAULT'],
 				'display': 'inline-block',
 				'fontFamily': fontFamily['sans'].join(','),
 				'fontSize': fontSize['base'],
@@ -103,7 +101,7 @@ module.exports = function({ addComponents, theme, variants }) {
 				'backgroundColor': 'transparent',
 				'borderColor': buttons[key].bg.color,
 				'borderStyle': 'solid',
-				'borderWidth': borderWidth['default'],
+				'borderWidth': borderWidth['DEFAULT'],
 				'color': buttons[key].bg.color,
 				'&:hover': {
 					'borderColor': buttons[key].bg.hover,

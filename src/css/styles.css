@@ -2,7 +2,7 @@
 @import "tailwindcss/components";
 
 /*
- * Example components using Tailwind's component extraction method. Components
+ * Example component using Tailwind's component extraction method. Components
  * should always be defined before importing Tailwind's utilities.
  *
  * Base components can be extended via JavaScript plugins. It is recommended to

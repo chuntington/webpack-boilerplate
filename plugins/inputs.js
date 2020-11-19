@@ -1,16 +1,19 @@
 module.exports = function({ addComponents, theme }) {
+	const appearance = theme('appearance', {});
 	const borderRadius = theme('borderRadius', {});
 	const colors = theme('colors', {});
+	const cursor = theme('cursor', {});
 	const fontFamily = theme('fontFamily', {});
 	const fontSize = theme('fontSize', {});
 	const fontWeight = theme('fontWeight', {});
 	const lineHeight = theme('lineHeight', {});
+	const outline = theme('outline', {});
 	const padding = theme('padding', {});
 	const width = theme('width', {});
 
 	addComponents({
 		'.input': {
-			'appearance': 'none',
+			'appearance': appearance['none'],
 			'backgroundColor': colors['gray']['200'],
 			'borderRadius': borderRadius['lg'],
 			'color': colors['black'],
@@ -23,10 +26,10 @@ module.exports = function({ addComponents, theme }) {
 			'width': width['full'],
 			'&:disabled': {
 				'color': colors['gray']['500'],
-				'cursor': 'not-allowed'
+				'cursor': cursor['not-allowed']
 			},
 			'&:focus': {
-				'outline': 'none'
+				'outline': outline['none']
 			},
 			'&.error': {
 				'boxShadow': 'inset 0 0 0 2px ' + colors['red']['500'],

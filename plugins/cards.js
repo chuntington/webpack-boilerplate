@@ -4,7 +4,7 @@ module.exports = function({ addComponents, theme }) {
 
 	addComponents({
 		'.card': {
-			'borderRadius': borderRadius['default']
+			'borderRadius': borderRadius['DEFAULT']
 		},
 		'.card-body': {
 			'padding': padding['6']

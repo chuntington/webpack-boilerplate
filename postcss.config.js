@@ -28,6 +28,7 @@ module.exports = {
 				'color-mod-function': {
 					unresolved: 'warn'
 				},
+				'focus-within-pseudo-class': false,
 				'nesting-rules': true
 			}
 		}),
