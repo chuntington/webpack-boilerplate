@@ -1,6 +1,6 @@
 {
 	"name": "webpack-boilerplate",
-	"version": "0.3.3",
+	"version": "0.3.4",
 	"author": "Cameron Huntington",
 	"description": "Starter Webpack (5) boilerplate for generating static web pages.",
 	"keywords": [
@@ -50,7 +50,7 @@
 		"stylelint": "^13.8.0",
 		"tailwindcss": "^2.0.1",
 		"terser-webpack-plugin": "^5.0.3",
-		"webpack": "5.4.0",
+		"webpack": "5.6.0",
 		"webpack-cli": "^4.2.0",
 		"webpack-dev-server": "^3.11.0"
 	},
