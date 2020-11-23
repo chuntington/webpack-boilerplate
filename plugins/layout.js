@@ -16,7 +16,7 @@ module.exports = function({ addComponents, theme }) {
 		},
 		'.row': {
 			'display': 'flex',
-			'flexGrow': flexGrow['default'],
+			'flexGrow': flexGrow['DEFAULT'],
 			'flexWrap': 'wrap',
 			'marginLeft': margin['-6'],
 			'marginRight': margin['-6']
