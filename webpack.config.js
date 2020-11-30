@@ -1,7 +1,6 @@
 require('dotenv').config();
 
 const Path = require('path');
-const ZLib = require("zlib");
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
