@@ -29,14 +29,26 @@ module.exports = {
 			}, {
 				test: /\.css$/,
 				use: [
-					MiniCssExtractPlugin.loader,
+					{
+						loader: MiniCssExtractPlugin.loader,
+						options: {
+							publicPath: ''
+						}
+					},
 					{
 						loader: 'css-loader',
 						options: {
 							importLoaders: 1
 						}
 					},
-					'postcss-loader'
+					{
+						loader: 'postcss-loader',
+						options: {
+							postcssOptions: {
+								config: './postcss.config.js'
+							}
+						}
+					}
 				]
 			}, {
 				test: /\.(ttf|eot|otf|woff|woff2)$/,
