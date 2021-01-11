@@ -31,6 +31,13 @@ module.exports = {
 			'scale': {
 				'25': '.25',
 			},
+			'scrollBehavior': {
+				'auto' : 'auto',
+				'inherit' : 'inherit',
+				'initial' : 'initial',
+				'smooth' : 'smooth',
+				'unset' : 'unset'
+			},
 			'scrollSnap': {
 				'alignments': {
 					'center': 'center',
@@ -53,7 +60,7 @@ module.exports = {
 					'none': 'none',
 					'unset': 'unset',
 					'both': 'both',
-					'both mandatory': 'both mandatory',
+					'both-mandatory': 'both mandatory',
 					'x': 'x',
 					'x-mandatory': 'x mandatory',
 					'x-proximity': 'x proximity',

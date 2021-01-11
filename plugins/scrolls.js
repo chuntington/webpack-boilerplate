@@ -1,6 +1,15 @@
 module.exports = function({ addUtilities, theme, variants }) {
 	const spacing = theme('spacing', {});
+	const scrollBehavior = theme('scrollBehavior', {});
 	const scrollSnap = theme('scrollSnap', {});
+
+	const behaviorClasses = Object.keys(scrollBehavior).map((key) => {
+		return {
+			[`.scroll-behavior-${key}`]: {
+				'scrollBehavior': scrollBehavior[key]
+			}
+		};
+	});
 
 	const snapAlignmentClasses = Object.keys(scrollSnap.alignments).map((key) => {
 		return {
@@ -123,6 +132,7 @@ module.exports = function({ addUtilities, theme, variants }) {
 	});
 
 	addUtilities([
+		behaviorClasses,
 		snapAlignmentClasses,
 		snapTypeClasses,
 		snapStopClasses,
