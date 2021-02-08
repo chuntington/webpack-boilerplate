@@ -110,6 +110,7 @@ module.exports = {
 				sortAttributes: !DevMode,
 				useShortDoctype: !DevMode
 			},
+			publicPath: '/',
 			template: 'src/index.html'
 		}),
 		(!DevMode)
