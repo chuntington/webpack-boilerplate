@@ -1,4 +1,3 @@
-const Autoprefixer = require('autoprefixer');
 const CssNano = require('cssnano');
 const EasingGradients = require('postcss-easing-gradients');
 const FontMagician = require('postcss-font-magician');
