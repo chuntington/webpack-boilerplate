@@ -14,7 +14,7 @@ module.exports = function({ addComponents, theme }) {
 	addComponents({
 		'.input': {
 			'appearance': appearance['none'],
-			'backgroundColor': colors['gray']['200'],
+			'backgroundColor': colors['gray']['100'],
 			'borderRadius': borderRadius['lg'],
 			'color': colors['black'],
 			'display': 'block',

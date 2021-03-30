@@ -56,7 +56,7 @@ module.exports = {
 		'constructor-super': 'error',
 		'curly': ['error', 'all'],
 		'default-case': 'error',
-		'dot-location': 'error',
+		'dot-location': ['error', 'property'],
 		'dot-notation': 'error',
 		'eol-last': ['error', 'always'],
 		'eqeqeq': 'warn',
@@ -192,7 +192,14 @@ module.exports = {
 		'no-extra-bind': 'error',
 		'no-extra-boolean-cast': 'error',
 		'no-extra-label': 'error',
-		'no-extra-parens': 'error',
+		'no-extra-parens': [
+			'error',
+			'all',
+			{
+				'enforceForArrowConditionals': false,
+				'returnAssign': false
+			}
+		],
 		'no-extra-semi': 'error',
 		'no-fallthrough': 'error',
 		'no-floating-decimal': 'warn',
