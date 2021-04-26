@@ -2,7 +2,6 @@ module.exports = function({ addComponents, theme }) {
 	const appearance = theme('appearance', {});
 	const borderRadius = theme('borderRadius', {});
 	const colors = theme('colors', {});
-	const cursor = theme('cursor', {});
 	const fontFamily = theme('fontFamily', {});
 	const fontSize = theme('fontSize', {});
 	const fontWeight = theme('fontWeight', {});
@@ -26,7 +25,7 @@ module.exports = function({ addComponents, theme }) {
 			'width': width['full'],
 			'&:disabled': {
 				'color': colors['gray']['500'],
-				'cursor': cursor['not-allowed']
+				'cursor': 'not-allowed'
 			},
 			'&:focus': {
 				'outline': outline['none']
