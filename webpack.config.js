@@ -52,12 +52,9 @@ module.exports = {
 				]
 			}, {
 				test: /\.(ttf|eot|otf|woff|woff2)$/,
-				use: {
-					loader: 'file-loader',
-					options: {
-						name: '[name].[ext]',
-						outputPath: 'fonts/'
-					}
+				type: 'asset/resource',
+				generator: {
+					filename: 'fonts/[hash][ext][query]'
 				}
 			}
 		]
