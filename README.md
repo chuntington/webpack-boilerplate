@@ -58,13 +58,108 @@ The generated bundle will be placed inside the `/dist` directory.
 
 *Note: When using styled components, the extracted CSS is likely to be invalid according to the default StyleLint rules. Modify the linting rules in `stylelint.config.js` to accommodate your situation or disable linting completely in `postcss.config.js`. It may also be helpful to modify or temporarily disable linting rules in `eslint.config.js` when utilizing any of the below frameworks.*
 
+### VueJS (3.x)
+Below is an example of a [Vue.js](https://github.com/vuejs/vue-next) (3.x) implementation, along with `.vue` [template](https://github.com/vuejs/vue-next/tree/master/packages/compiler-sfc#readme) [support](https://github.com/vuejs/vue-loader).
+
+In the terminal:
+
+```shell
+> npm install vue@next vue-loader @vue/compiler-sfc --save
+```
+
+In `webpack.config.js`, import and assign appropriate loaders and plugins:
+
+```javascript
+const { VueLoaderPlugin } = require('vue-loader');
+
+module.exports = {
+    module: {
+        rules: [
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader'
+            },
+            // ...
+        ]
+    },
+    plugins: [
+        new VueLoaderPlugin(),
+        // ...
+    ],
+    // Override the alias for template interpolation
+    resolve: {
+        alias: {
+            vue: 'vue/dist/vue.esm-bundler.js'
+        }
+    }
+}
+```
+
+In `postcss.config.js`, inform Purgecss of any `.vue` templates:
+
+```javascript
+Purgecss({
+    content: [
+        './src/js/**/*.vue',
+        // ...
+    ]
+})
+```
+
+In `src/js/components/ExampleComponent.vue`, create an example styled component template:
+
+```vue
+<template>
+    <h1 class="example">Example Component</h1>
+</template>
+
+<script>
+    export default {
+        data: () => ({
+            show: false
+        }),
+        mounted() {
+            this.show = true;
+            console.log('Example component mounted.');
+        }
+    };
+</script>
+
+<style>
+    .example {
+        color: gray;
+    }
+</style>
+```
+
+In `src/index.html`, declare an app container with the example component nested inside:
+
+```html
+<body class="antialiased">
+    <div id="app">
+        <example-component></example-component>
+    </div>
+</body>
+```
+
+In `src/js/main.js`, import the framework and example component, and initiate a new app instance:
+
+```javascript
+import ExampleComponent from './components/ExampleComponent.vue';
+import { createApp } from 'vue';
+
+const vm = createApp({ components: { ExampleComponent } });
+
+vm.mount('#app');
+```
+
 ### VueJS (2.x)
 Below is an example of a [Vue.js](https://github.com/vuejs/vue) (2.x) implementation, along with `.vue` [template](https://github.com/vuejs/vue/tree/dev/packages/vue-template-compiler) [support](https://github.com/vuejs/vue-loader).
 
 In the terminal:
 
 ```shell
-> npm install vue vue-loader vue-template-compiler --save
+> npm install vue@2.6.14 vue-loader@15.9.7 vue-template-compiler@2.6.14 --save
 ```
 
 In `webpack.config.js`, import and assign appropriate loaders and plugins:
