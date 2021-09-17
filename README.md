@@ -159,7 +159,7 @@ Below is an example of a [Vue.js](https://github.com/vuejs/vue) (2.x) implementa
 In the terminal:
 
 ```shell
-> npm install vue@2.6.14 vue-loader@15.9.7 vue-template-compiler@2.6.14 --save
+> npm install vue@2.6.14 vue-loader@15.9.8 vue-template-compiler@2.6.14 --save
 ```
 
 In `webpack.config.js`, import and assign appropriate loaders and plugins:
