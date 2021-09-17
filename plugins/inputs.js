@@ -23,6 +23,9 @@ module.exports = function({ addComponents, theme }) {
 			'lineHeight': lineHeight['tight'],
 			'padding': padding['3'] + ' ' + padding['4'],
 			'width': width['full'],
+			'&::placeholder': {
+				'color': colors['gray']['500'],
+			},
 			'&:disabled': {
 				'color': colors['gray']['500'],
 				'cursor': 'not-allowed'
