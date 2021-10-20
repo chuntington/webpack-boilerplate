@@ -15,7 +15,11 @@ module.exports = {
 		plugin(require('./plugins/layout.js')),
 		plugin(require('./plugins/scrolls.js'))
 	],
-	'purge': false,
+	'mode': 'jit',
+	'purge': [
+		// './dist/**/*.html',
+		'./src/**/*.{html,js,vue}',
+	],
 	'theme': {
 		'extend': {
 			'backgroundSize': {
