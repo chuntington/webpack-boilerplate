@@ -110,7 +110,6 @@ module.exports = {
 		'font-family-no-missing-generic-family-keyword': true,
 		'font-weight-notation': 'numeric',
 		// 'function-blacklist': [],
-		'function-calc-no-invalid': true,
 		'function-calc-no-unspaced-operator': true,
 		'function-comma-newline-after': 'always-multi-line',
 		'function-comma-newline-before': 'never-multi-line',
