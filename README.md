@@ -1,6 +1,6 @@
 # Webpack Boilerplate
 
-![GitHub](https://img.shields.io/github/license/chuntington/webpack-boilerplate) ![GitHub package.json version](https://img.shields.io/github/package-json/v/chuntington/webpack-boilerplate) ![David](https://img.shields.io/david/dev/chuntington/webpack-boilerplate) ![GitHub last commit](https://img.shields.io/github/last-commit/chuntington/webpack-boilerplate)
+![GitHub](https://img.shields.io/github/license/chuntington/webpack-boilerplate) ![GitHub package.json version](https://img.shields.io/github/package-json/v/chuntington/webpack-boilerplate) ![GitHub code size](https://img.shields.io/github/languages/code-size/chuntington/webpack-boilerplate) ![GitHub last commit](https://img.shields.io/github/last-commit/chuntington/webpack-boilerplate)
 
 A starter Webpack (5) boilerplate for generating static web pages.
 
