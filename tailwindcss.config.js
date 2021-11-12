@@ -16,10 +16,7 @@ module.exports = {
 		plugin(require('./plugins/scrolls.js'))
 	],
 	'mode': 'jit',
-	'purge': [
-		// './dist/**/*.html',
-		'./src/**/*.{html,js,vue}',
-	],
+	'purge': ['./src/**/*.{html,js}'],
 	'theme': {
 		'extend': {
 			'backgroundSize': {
@@ -33,7 +30,7 @@ module.exports = {
 				]
 			},
 			'scale': {
-				'25': '.25',
+				'25': '.25'
 			},
 			'scrollBehavior': {
 				'auto' : 'auto',
@@ -77,9 +74,22 @@ module.exports = {
 	},
 	'variants': {
 		'extend': {
-			'display': ['responsive', 'hover', 'focus', 'group-hover', 'group-focus', 'group-active'],
+			'display': [
+				'responsive',
+				'hover',
+				'focus',
+				'group-hover',
+				'group-focus',
+				'group-active'
+			],
 			'rotate': ['active'],
-			'textColor': ['responsive', 'hover', 'focus', 'group-hover', 'group-focus']
+			'textColor': [
+				'responsive',
+				'hover',
+				'focus',
+				'group-hover',
+				'group-focus'
+			]
 		}
 	}
 };
