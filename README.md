@@ -172,15 +172,16 @@ vm.mount('#app');
 ```
 
 ### VueJS (2.x)
-Below is an example of a [Vue.js](https://github.com/vuejs/vue) (2.x) implementation, along with `.vue` [template](https://github.com/vuejs/vue/tree/dev/packages/vue-template-compiler) [support](https://github.com/vuejs/vue-loader).
+Below is an example of a [Vue.js](https://github.com/vuejs/vue) (2.x)
+implementation [with](https://github.com/vuejs/vue/tree/dev/packages/vue-template-compiler) [support](https://github.com/vuejs/vue-loader) for `.vue` [single file components](https://vuejs.org/v2/guide/single-file-components.html).
 
 In the terminal:
 
 ```shell
-> npm install vue@2 vue-loader@15 vue-template-compiler@2 --save
+> npm install vue@2 vue-loader@15 vue-template-compiler@2 vue-eslint-parser@8 --save
 ```
 
-In `webpack.config.js`, import and assign appropriate loaders and plugins:
+In `webpack.config.js`, import and assign the appropriate loader, plugin and alias:
 
 ```javascript
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
@@ -191,13 +192,7 @@ module.exports = {
             {
                 test: /\.vue$/,
                 loader: 'vue-loader'
-            }, {
-                test: /\.css$/,
-                use: [
-                    'vue-style-loader',
-                    // ...
-                ]
-            },
+            }
             // ...
         ]
     },
@@ -214,7 +209,7 @@ module.exports = {
 }
 ```
 
-In `postcss.config.js`, inform Purgecss of any `.vue` templates:
+In `postcss.config.js`, inform Purgecss of any `.vue` single file components:
 
 ```javascript
 Purgecss({
@@ -223,7 +218,27 @@ Purgecss({
 })
 ```
 
-In `src/js/components/ExampleComponent.vue`, create an example styled component template:
+In `eslint.config.js`, assign the appropriate parser:
+
+```javascript
+module.exports = {
+    parser: 'vue-eslint-parser',
+    // ...
+}
+```
+
+In `package.json`, inform ESLint of any `.vue` single file components:
+
+```javascript
+{
+    'scripts': {
+        'lint': 'cross-env eslint --ext js,vue ./src/js/* -c ./eslint.config.js',
+        // ...
+    }
+}
+```
+
+In `src/js/components/ExampleComponent.vue`, create an example single file component:
 
 ```vue
 <template>
