@@ -59,15 +59,15 @@ The generated bundle will be placed inside the `/dist` directory.
 *Note: When using styled components, the extracted CSS is likely to be invalid according to the default StyleLint rules. Modify the linting rules in `stylelint.config.js` to accommodate your situation or disable linting completely in `postcss.config.js`. It may also be helpful to modify or temporarily disable linting rules in `eslint.config.js` when utilizing any of the below frameworks.*
 
 ### VueJS (3.x)
-Below is an example of a [Vue.js](https://github.com/vuejs/vue-next) (3.x) implementation, along with `.vue` [template](https://github.com/vuejs/vue-next/tree/master/packages/compiler-sfc#readme) [support](https://github.com/vuejs/vue-loader).
+Below is an example of a [Vue.js](https://github.com/vuejs/vue-next) (3.x) implementation with [support](https://github.com/vuejs/vue-loader) for `.vue` [single file components](https://v3.vuejs.org/guide/single-file-component.html).
 
 In the terminal:
 
 ```shell
-> npm install vue@next vue-loader @vue/compiler-sfc --save
+> npm install vue@3 vue-loader@16 vue-eslint-parser@8 --save
 ```
 
-In `webpack.config.js`, import and assign appropriate loaders and plugins:
+In `webpack.config.js`, import and assign the appropriate loader, plugin and alias:
 
 ```javascript
 const { VueLoaderPlugin } = require('vue-loader');
@@ -95,18 +95,36 @@ module.exports = {
 }
 ```
 
-In `postcss.config.js`, inform Purgecss of any `.vue` templates:
+In `postcss.config.js`, inform Purgecss of any `.vue` single file components:
 
 ```javascript
 Purgecss({
-    content: [
-        './src/js/**/*.vue',
-        // ...
-    ]
+    content: ['./src/**/*.{html,js,vue}'],
+    // ...
 })
 ```
 
-In `src/js/components/ExampleComponent.vue`, create an example styled component template:
+In `eslint.config.js`, assign the appropriate parser:
+
+```javascript
+module.exports = {
+    parser: 'vue-eslint-parser',
+    // ...
+}
+```
+
+In `package.json`, inform ESLint of any `.vue` single file components:
+
+```javascript
+{
+    'scripts': {
+        'lint': 'cross-env eslint --ext js,vue ./src/js/* -c ./eslint.config.js',
+        // ...
+    }
+}
+```
+
+In `src/js/components/ExampleComponent.vue`, create an example single file component:
 
 ```vue
 <template>
@@ -159,7 +177,7 @@ Below is an example of a [Vue.js](https://github.com/vuejs/vue) (2.x) implementa
 In the terminal:
 
 ```shell
-> npm install vue@2.6.14 vue-loader@15.9.8 vue-template-compiler@2.6.14 --save
+> npm install vue@2 vue-loader@15 vue-template-compiler@2 --save
 ```
 
 In `webpack.config.js`, import and assign appropriate loaders and plugins:
@@ -200,10 +218,8 @@ In `postcss.config.js`, inform Purgecss of any `.vue` templates:
 
 ```javascript
 Purgecss({
-    content: [
-        './src/js/**/*.vue',
-        // ...
-    ]
+    content: ['./src/**/*.{html,js,vue}'],
+    // ...
 })
 ```
 
@@ -295,10 +311,8 @@ In `postcss.config.js`, inform Purgecss of any `.svelte` templates:
 
 ```javascript
 Purgecss({
-    content: [
-        './src/js/**/*.svelte',
-        // ...
-    ]
+    content: ['./src/**/*.{html,js,svelte}'],
+    // ...
 })
 ```
 
