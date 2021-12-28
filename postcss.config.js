@@ -7,6 +7,7 @@ const PostcssPresetEnv = require('postcss-preset-env');
 const Purgecss = require('@fullhuman/postcss-purgecss');
 const StyleLint = require('stylelint');
 const Tailwindcss = require('tailwindcss');
+const TailwindcssNesting = require('tailwindcss/nesting');
 
 const DevMode = process.env.NODE_ENV === 'development';
 
@@ -16,6 +17,7 @@ module.exports = {
 			configFile: './stylelint.config.js'
 		}),
 		PostcssImport(),
+		TailwindcssNesting(),
 		Tailwindcss('./tailwindcss.config.js'),
 		PostcssAdvancedVariables(),
 		PostcssPresetEnv({
@@ -28,7 +30,7 @@ module.exports = {
 					unresolved: 'warn'
 				},
 				'focus-within-pseudo-class': false,
-				'nesting-rules': true
+				'nesting-rules': false
 			}
 		}),
 		EasingGradients({

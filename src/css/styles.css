@@ -15,13 +15,10 @@
  * PostcssPresetEnv allows us to use staged, proposed and approved CSS features
  * and specifications.
  *
- * By default, specifications that have reached stage 1+ will be polyfilled, as
- * well as nesting-rules and the color-mod function.
+ * By default, specifications that have reached stage 1+ will be polyfilled.
  */
 :root {
-	--custom-header-font-family: "Permanent Marker", sans-serif;
-	--custom-header-font-weight: 800;
-	--opaque-white: color-mod(theme("colors.white") alpha(90%));
+	--theme-white: theme("colors.white");
 }
 
 body {
@@ -30,42 +27,19 @@ body {
 	background-size: 152px 152px;
 }
 
-/*
- * Example usage of Tailwind's pseudo-class variants generator method.
- *
- * Variants take precendence in the order in which they are listed. In the rule
- * below, the `active` variant below will take precedence over `hover`. It is
- * recommended to refactor variants extensions to a plugin where possible.
- */
-@variants hover, active {
-	.rotate-10 {
-		transform: rotate(10deg);
-	}
-}
-
 .custom-header {
 	@apply pr-4 relative text-5xl;
 
-	color: var(--opaque-white);
+	color: var(--theme-white);
 
 	/*
 	 * If this class appears on a page, FontMagician will attempt to import the
 	 * font from the defined 'foundries' in the plugin's configuration.
 	 *
-	 * Most fonts are defined within the Tailwind configuration and will be
-	 * automatically imported if needed. The rule below exists only to
-	 * demonstrate when FontMagician works.
+	 * Fonts defined within the Tailwind configuration are also automatically
+	 * imported if their encapsulating class is used.
 	 */
-	font-family: var(--custom-header-font-family) !important;
-
-	/*
-	 * FontMagician won't import the font weight below due to the strict
-	 * 'variants' definitions in the plugin's configuration.
-	 *
-	 * Removing all 'variants' definitions will result in every available
-	 * weight being imported (if used within a selector).
-	 */
-	font-weight: var(--custom-header-font-weight);
+	font-family: "Permanent Marker", sans-serif !important;
 
 	&:after {
 		@apply absolute rounded-full;
