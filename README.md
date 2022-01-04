@@ -56,7 +56,7 @@ The generated bundle will be placed inside the `/dist` directory.
 
 ## Installing a framework
 
-*Note: When using styled components, the extracted CSS is likely to be invalid according to the default StyleLint rules. Modify the linting rules in `stylelint.config.js` to accommodate your situation or disable linting completely in `postcss.config.js`. It may also be helpful to modify or temporarily disable linting rules in `eslint.config.js` when utilizing any of the below frameworks.*
+*Note: When using styled components, the extracted CSS is likely to be invalid according to the preset StyleLint rules. You may modify these rules in `stylelint.config.js` to accommodate, or disable linting completely in `postcss.config.js`. In addition, it may be helpful to modify or temporarily disable some JavaScript linting rules in `eslint.config.js` when utilizing any of the below frameworks.*
 
 ### VueJS (3.x)
 Below is an example of a [Vue.js](https://github.com/vuejs/vue-next) (3.x) implementation with [support](https://github.com/vuejs/vue-loader) for `.vue` [single file components](https://v3.vuejs.org/guide/single-file-component.html).
