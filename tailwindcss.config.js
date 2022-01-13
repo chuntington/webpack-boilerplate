@@ -9,7 +9,8 @@ module.exports = {
 		plugin(require('./plugins/inputs.js')),
 		plugin(require('./plugins/interactions.js')),
 		plugin(require('./plugins/labels.js')),
-		plugin(require('./plugins/layout.js'))
+		plugin(require('./plugins/layout.js')),
+		plugin(require('./plugins/modals.js'))
 	],
 	'content': ['./src/**/*.{html,js}'],
 	'theme': {

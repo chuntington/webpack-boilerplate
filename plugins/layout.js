@@ -18,8 +18,8 @@ module.exports = function({ addComponents, theme }) {
 			'display': 'flex',
 			'flexGrow': flexGrow['DEFAULT'],
 			'flexWrap': 'wrap',
-			'marginLeft': margin['-6'],
-			'marginRight': margin['-6']
+			'marginLeft': `-${margin['6']}`,
+			'marginRight': `-${margin['6']}`
 		}
 	});
 };
