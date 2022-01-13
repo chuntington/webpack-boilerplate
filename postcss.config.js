@@ -26,9 +26,6 @@ module.exports = {
 			},
 			stage: 1,
 			features: {
-				'color-mod-function': {
-					unresolved: 'warn'
-				},
 				'focus-within-pseudo-class': false,
 				'nesting-rules': false
 			}
