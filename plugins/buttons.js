@@ -2,6 +2,7 @@ module.exports = function({ addComponents, theme, variants }) {
 	const borderRadius = theme('borderRadius', {});
 	const borderWidth = theme('borderWidth', {});
 	const colors = theme('colors', {});
+	const cursor = theme('cursor', {});
 	const fontFamily = theme('fontFamily', {});
 	const fontSize = theme('fontSize', {});
 	const fontWeight = theme('fontWeight', {});
@@ -57,7 +58,7 @@ module.exports = function({ addComponents, theme, variants }) {
 				'textAlign': 'center',
 				'whiteSpace': 'nowrap',
 				'&:disabled': {
-					'cursor': 'not-allowed'
+					'cursor': cursor['not-allowed']
 				}
 			},
 			'.btn-sm': {

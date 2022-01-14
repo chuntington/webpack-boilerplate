@@ -6,7 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin').default;
 const TerserPlugin = require('terser-webpack-plugin');
 
 const DevMode = process.env.NODE_ENV === 'development';
@@ -91,7 +91,7 @@ module.exports = {
 		}),
 		new MiniCssExtractPlugin({
 			filename: (DevMode) ? '[name].css' : '[name].[fullhash].css',
-			chunkFilename: (DevMode) ? '[id].css' : '[id].[fullhash].css',
+			chunkFilename: (DevMode) ? '[id].css' : '[id].[fullhash].css'
 		}),
 		new HtmlWebpackPlugin({
 			favicon: 'src/favicon.ico',
