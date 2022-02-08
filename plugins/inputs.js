@@ -1,5 +1,4 @@
 module.exports = function({ addComponents, theme }) {
-	const appearance = theme('appearance', {});
 	const borderRadius = theme('borderRadius', {});
 	const colors = theme('colors', {});
 	const cursor = theme('cursor', {});
@@ -7,15 +6,14 @@ module.exports = function({ addComponents, theme }) {
 	const fontSize = theme('fontSize', {});
 	const fontWeight = theme('fontWeight', {});
 	const lineHeight = theme('lineHeight', {});
-	const outline = theme('outline', {});
+	const outlineWidth = theme('outlineWidth', {});
 	const padding = theme('padding', {});
 	const width = theme('width', {});
 
 	addComponents({
 		'.input': {
-			'appearance': appearance['none'],
 			'backgroundColor': colors['gray']['100'],
-			'borderRadius': borderRadius['lg'],
+			'borderRadius': borderRadius['DEFAULT'],
 			'color': colors['black'],
 			'display': 'block',
 			'fontFamily': fontFamily['sans'].join(','),
@@ -32,7 +30,9 @@ module.exports = function({ addComponents, theme }) {
 				'cursor': cursor['not-allowed']
 			},
 			'&:focus': {
-				'outline': outline['none']
+				'outlineStyle': 'solid',
+				'outlineColor': colors['gray']['300'],
+				'outlineWidth': outlineWidth['1']
 			},
 			'&.error': {
 				'boxShadow': 'inset 0 0 0 2px ' + colors['red']['500'],
