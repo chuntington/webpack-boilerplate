@@ -16,34 +16,51 @@ module.exports = function({ addComponents, theme, variants }) {
 	) {
 		return {
 			'bg': {
-				'color': (shades === null) ? colors[base] : colors[base][shades[0]],
-				'hover': (shades === null) ? colors[base] : colors[base][shades[1]],
-				'focus': (shades === null) ? colors[base] : colors[base][shades[2]],
-				'active': (shades === null) ? colors[base] : colors[base][shades[3]],
-				'disabled': (shades === null) ? colors[base] : colors[base][shades[4]]
+				'color': (shades === null) ? base : shades[0],
+				'hover': (shades === null) ? base : shades[1],
+				'focus': (shades === null) ? base : shades[2],
+				'active': (shades === null) ? base : shades[3],
+				'disabled': (shades === null) ? base : shades[4]
 			},
 			'text': {
-				'color': colors[text],
-				'hover': colors[text],
-				'focus': colors[text],
-				'active': colors[text],
-				'disabled': colors[text]
+				'color': text,
+				'hover': text,
+				'focus': text,
+				'active': text,
+				'disabled': text
 			}
 		}
 	};
 
-	const buttons = {
-		'black': generateButton('black', null, 'white'),
-		'white': generateButton('white', null, 'black'),
-		'gray': generateButton('gray', [500, 600, 600, 700, 300], 'white'),
-		'red': generateButton('red', [500, 600, 600, 700, 300], 'white'),
-		'yellow': generateButton('yellow', [500, 600, 600, 700, 300], 'white'),
-		'green': generateButton('green', [500, 600, 600, 700, 300], 'white'),
-		'blue': generateButton('blue', [500, 600, 600, 700, 300], 'white'),
-		'indigo': generateButton('indigo', [500, 600, 600, 700, 300], 'white'),
-		'purple': generateButton('purple', [500, 600, 600, 700, 300], 'white'),
-		'pink': generateButton('pink', [500, 600, 600, 700, 300], 'white')
-	};
+	let buttons = {};
+
+	Object.keys(colors).forEach((key) => {
+		if (
+			key === 'inherit' || 
+			key === 'current' || 
+			key === 'transparent'
+		) {
+			return;
+		}
+
+		if (key === 'black') {
+			buttons[key] = generateButton(colors[key], null, 'white');
+		} else if (key === 'white') {
+			buttons[key] = generateButton(colors[key], null, 'black');
+		} else {
+			buttons[key] = generateButton(
+				colors[key],
+				[
+					colors[key][500],
+					colors[key][600],
+					colors[key][600],
+					colors[key][700],
+					colors[key][300]
+				],
+				'white'
+			);
+		}
+	});
 
 	addComponents([
 		{
