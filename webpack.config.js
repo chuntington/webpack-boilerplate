@@ -20,11 +20,7 @@ module.exports = {
 				test: /\.js$/,
 				exclude: /node_modules/,
 				use: {
-					loader: 'babel-loader',
-					options: {
-						cacheDirectory: true,
-						configFile: './babel.config.js'
-					}
+					loader: 'swc-loader'
 				}
 			}, {
 				test: /\.css$/,

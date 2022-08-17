@@ -18,7 +18,7 @@ For the **beehive**:
 
 For the **script kidz**:
 
-- [Babel](https://github.com/babel/babel) *(Transpiling and compiling)*
+- [SWC](https://github.com/swc-project/swc) *(Transpiling and compiling)*
 - [Terser](https://github.com/terser-js/terser) *(Uglifying and compressing)*
 - [ESLint](https://github.com/eslint/eslint) *(Keeping things in order)*
 - [Insert testing framework here]
@@ -380,20 +380,26 @@ Below is an example of a [React.js](https://github.com/facebook/react) (17.x) im
 In the terminal:
 
 ```shell
-> npm install @babel/preset-react eslint-plugin-react react react-dom --save
+> npm install eslint-plugin-react react react-dom --save
 ```
 
-In `babel.config.js`, assign the preset:
+In `.swcrc`, enable the appropriate parser and transform options:
 
 ```javascript
-module.exports = function(api) {
+{
+    "jsc": {
+        "parser": {
+            "jsx": true,
+            // ...
+        },
+        "transform": {
+            "react": {
+                "runtime": "automatic"
+            }
+        }
+    },
     // ...
-
-    return {
-        presets: ['@babel/preset-env', '@babel/preset-react'],
-        // ...
-    };
-};
+}
 ```
 
 In `eslint.config.js`, enable the appropriate parser options and plugin:

@@ -3,7 +3,7 @@
 import '../css/styles.css';
 
 /*
- * Babel allows us to write ECMAScript 2015+ code by converting it into
+ * SWC allows us to write ECMAScript 2015+ code by converting it into
  * backwards compatible JavaScript.
  *
  * Note: Terser will automatically minify and compress any Javascript
