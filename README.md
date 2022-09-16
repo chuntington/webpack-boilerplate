@@ -6,20 +6,20 @@ A starter Webpack (5) boilerplate for generating static web pages.
 
 For the **beehive**:
 
-- [TailwindCSS](https://github.com/tailwindcss/tailwindcss) *(Utility framework)*
+- [TailwindCSS](https://github.com/tailwindlabs/tailwindcss) *(Utility framework)*
 - [Autoprefixer](https://github.com/postcss/autoprefixer) *(Prefixing for target browsers)*
 - [Import](https://github.com/postcss/postcss-import) *(Inlining @import rules)*
-- [FontMagician](https://github.com/jonathantneal/postcss-font-magician) *(Generating @font-face rules)*
-- [AdvancedVariables](https://github.com/jonathantneal/postcss-advanced-variables) *(Variables, conditionals and loops)*
+- [FontMagician](https://github.com/csstools/postcss-font-magician) *(Generating @font-face rules)*
+- [AdvancedVariables](https://github.com/csstools/postcss-advanced-variables) *(Variables, conditionals and loops)*
 - [EasingGradients](https://github.com/larsenwork/postcss-easing-gradients) *(Generating eased gradients)*
 - [CSSNano](https://github.com/cssnano/cssnano) *(Compressing and minifying)*
-- [PurgeCSS](https://github.com/FullHuman/postcss-purgecss) *(Removing unused styles)*
+- [PurgeCSS](https://github.com/FullHuman/purgecss/tree/main/packages/postcss-purgecss) *(Removing unused styles)*
 - [StyleLint](https://github.com/stylelint/stylelint) *(Keeping things in order)*
 
 For the **script kidz**:
 
 - [SWC](https://github.com/swc-project/swc) *(Transpiling and compiling)*
-- [Terser](https://github.com/terser-js/terser) *(Uglifying and compressing)*
+- [Terser](https://github.com/terser/terser) *(Uglifying and compressing)*
 - [ESLint](https://github.com/eslint/eslint) *(Keeping things in order)*
 - [Insert testing framework here]
 
@@ -59,7 +59,7 @@ The generated bundle will be placed inside the `/dist` directory.
 *Note: When using styled components, the extracted CSS is likely to be invalid according to the preset StyleLint rules. You may modify these rules in `stylelint.config.js` to accommodate, or disable linting completely in `postcss.config.js`. In addition, it may be helpful to modify or temporarily disable some JavaScript linting rules in `eslint.config.js` when utilizing any of the below frameworks.*
 
 ### VueJS (3.x)
-Below is an example of a [Vue.js](https://github.com/vuejs/vue-next) (3.x) implementation with [support](https://github.com/vuejs/vue-loader) for `.vue` [single file components](https://v3.vuejs.org/guide/single-file-component.html).
+Below is an example of a [Vue.js](https://github.com/vuejs/core) (3.x) implementation with [support](https://github.com/vuejs/vue-loader) for `.vue` [single file components](https://vuejs.org/guide/scaling-up/sfc.html).
 
 In the terminal:
 
@@ -173,7 +173,7 @@ vm.mount('#app');
 
 ### VueJS (2.x)
 Below is an example of a [Vue.js](https://github.com/vuejs/vue) (2.x)
-implementation [with](https://github.com/vuejs/vue/tree/dev/packages/vue-template-compiler) [support](https://github.com/vuejs/vue-loader) for `.vue` [single file components](https://vuejs.org/v2/guide/single-file-components.html).
+implementation [with](https://github.com/vuejs/vue/tree/dev/packages/vue-template-compiler) [support](https://github.com/vuejs/vue-loader) for `.vue` [single file components](https://v2.vuejs.org/v2/guide/single-file-components.html).
 
 In the terminal:
 
