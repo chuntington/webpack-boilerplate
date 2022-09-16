@@ -64,7 +64,7 @@ Below is an example of a [Vue.js](https://github.com/vuejs/vue-next) (3.x) imple
 In the terminal:
 
 ```shell
-> npm install vue@3 vue-loader@16 vue-eslint-parser@8 --save
+> npm install vue vue-loader vue-eslint-parser
 ```
 
 In `webpack.config.js`, import and assign the appropriate loader, plugin and alias:
@@ -178,7 +178,7 @@ implementation [with](https://github.com/vuejs/vue/tree/dev/packages/vue-templat
 In the terminal:
 
 ```shell
-> npm install vue@2 vue-loader@15 vue-template-compiler@2 vue-eslint-parser@8 --save
+> npm install vue@2 vue-loader@15 vue-template-compiler@2 vue-eslint-parser@8
 ```
 
 In `webpack.config.js`, import and assign the appropriate loader, plugin and alias:
@@ -291,7 +291,7 @@ Below is an example of a [Svelte.js](https://github.com/sveltejs/svelte) (3.x) i
 In the terminal:
 
 ```shell
-> npm install svelte svelte-loader --save
+> npm install svelte svelte-loader
 ```
 
 In `webpack.config.js`, assign the appropriate loader and resolve configuration:
@@ -303,10 +303,7 @@ module.exports = {
             {
                 test: /\.svelte$/,
                 use: {
-                    loader: 'svelte-loader',
-                    options: {
-                        emitCss: true
-                    }
+                    loader: 'svelte-loader'
                 }
             },
             // ...
@@ -374,13 +371,13 @@ const app = new App({
 window.app = app;
 ```
 
-### ReactJS (17.x)
-Below is an example of a [React.js](https://github.com/facebook/react) (17.x) implementation.
+### ReactJS (18.x)
+Below is an example of a [React.js](https://github.com/facebook/react) (18.x) implementation.
 
 In the terminal:
 
 ```shell
-> npm install eslint-plugin-react react react-dom --save
+> npm install eslint-plugin-react react react-dom
 ```
 
 In `.swcrc`, enable the appropriate parser and transform options:
