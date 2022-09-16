@@ -22,7 +22,7 @@
 	},
 	"scripts": {
 		"build": "cross-env webpack --progress",
-		"lint": "cross-env eslint --ext js,vue ./src/js/* -c ./eslint.config.js",
+		"lint": "cross-env eslint --ext js ./src/js/* -c ./eslint.config.js",
 		"watch": "cross-env webpack --watch --progress",
 		"serve": "cross-env webpack serve"
 	},
