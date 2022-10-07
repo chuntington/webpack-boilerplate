@@ -113,17 +113,6 @@ module.exports = {
 }
 ```
 
-In `package.json`, inform ESLint of any `.vue` single file components:
-
-```javascript
-{
-    'scripts': {
-        'lint': 'cross-env eslint --ext js,vue ./src/js/* -c ./eslint.config.js',
-        // ...
-    }
-}
-```
-
 In `src/js/components/ExampleComponent.vue`, create an example single file component:
 
 ```vue
@@ -224,17 +213,6 @@ In `eslint.config.js`, assign the appropriate parser:
 module.exports = {
     parser: 'vue-eslint-parser',
     // ...
-}
-```
-
-In `package.json`, inform ESLint of any `.vue` single file components:
-
-```javascript
-{
-    'scripts': {
-        'lint': 'cross-env eslint --ext js,vue ./src/js/* -c ./eslint.config.js',
-        // ...
-    }
 }
 ```
 
