@@ -2,10 +2,11 @@
 
 ![GitHub](https://img.shields.io/github/license/chuntington/webpack-boilerplate) ![GitHub package.json version](https://img.shields.io/github/package-json/v/chuntington/webpack-boilerplate) ![GitHub code size](https://img.shields.io/github/languages/code-size/chuntington/webpack-boilerplate) ![GitHub last commit](https://img.shields.io/github/last-commit/chuntington/webpack-boilerplate)
 
-A starter Webpack (5) boilerplate for generating static web pages.
+A starter [Webpack (5)](https://github.com/webpack/webpack) boilerplate for generating static web pages.
 
 For the **beehive**:
 
+- [PostCSS](https://github.com/postcss/postcss) *(Transforming styles)*
 - [TailwindCSS](https://github.com/tailwindlabs/tailwindcss) *(Utility framework)*
 - [Autoprefixer](https://github.com/postcss/autoprefixer) *(Prefixing for target browsers)*
 - [Import](https://github.com/postcss/postcss-import) *(Inlining @import rules)*
