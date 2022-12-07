@@ -7,7 +7,6 @@ module.exports = {
 		plugin(require('./plugins/cards.js')),
 		plugin(require('./plugins/headings.js')),
 		plugin(require('./plugins/inputs.js')),
-		plugin(require('./plugins/interactions.js')),
 		plugin(require('./plugins/labels.js')),
 		plugin(require('./plugins/layout.js')),
 		plugin(require('./plugins/modals.js'))
