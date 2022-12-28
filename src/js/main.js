@@ -6,7 +6,7 @@ import '../css/styles.css';
  * SWC allows us to write ECMAScript 2015+ code by converting it into
  * backwards compatible JavaScript.
  *
- * Note: Terser will automatically minify and compress any Javascript
+ * Terser will automatically minify and compress any Javascript
  * files during production builds.
  */
 class Test {
@@ -30,7 +30,7 @@ class Test {
  * ESLint will lint any Javascript files during development builds according
  * to the defined 'rules' in the plugin's configuration.
  *
- * Note: Certain rule enforcements have been explicitly disabled in the
+ * Certain rule enforcements have been explicitly disabled in the
  * following lines to avoid errors.
  */
 /* eslint-disable-next-line semi */

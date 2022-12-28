@@ -1,8 +1,8 @@
 .btn-action {
-	@apply relative overflow-hidden transition-all;
+	@apply duration-300 relative overflow-hidden transition-all;
 
 	&:before {
-		@apply absolute bg-center bg-x-only duration-300 h-full left-0 opacity-0 origin-center scale-x-25 top-0 transform transition-all w-full z-10;
+		@apply absolute bg-center bg-x-only duration-300 h-full left-0 opacity-0 origin-center scale-x-0 top-0 transition-all w-full z-10;
 
 		content: "";
 	}
