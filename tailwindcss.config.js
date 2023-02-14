@@ -2,7 +2,7 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 const plugin = require('tailwindcss/plugin');
 
 module.exports = {
-	'plugins': [
+	plugins: [
 		plugin(require('./plugins/buttons.js')),
 		plugin(require('./plugins/cards.js')),
 		plugin(require('./plugins/headings.js')),
@@ -11,9 +11,9 @@ module.exports = {
 		plugin(require('./plugins/layout.js')),
 		plugin(require('./plugins/modals.js'))
 	],
-	'content': ['./src/**/*.{html,js}'],
-	'theme': {
-		'extend': {
+	content: ['./src/**/*.{html,js}'],
+	theme: {
+		extend: {
 			'backgroundSize': {
 				'x-only': '100% 0',
 				'full': '100% 100%'

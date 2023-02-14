@@ -1,10 +1,10 @@
 module.exports = {
 	env: {
-		'es6': true
+		es6: true
 	},
 	parserOptions: {
-		'ecmaVersion': 10,
-		'sourceType': 'module'
+		ecmaVersion: 10,
+		sourceType: 'module'
 	},
 	rules: {
 		'accessor-pairs': 'off',
