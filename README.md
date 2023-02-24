@@ -265,7 +265,7 @@ vm.$mount('#app');
 ```
 
 ### SvelteJS (3.x)
-Below is an example of a [Svelte.js](https://github.com/sveltejs/svelte) (3.x) implementation utilizing `.svelte` templates.
+Below is an example of a [Svelte.js](https://github.com/sveltejs/svelte) (3.x) implementation with [support](https://github.com/sveltejs/svelte-loader) for `.svelte` templates.
 
 In the terminal:
 
