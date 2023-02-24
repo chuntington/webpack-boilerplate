@@ -23,7 +23,7 @@ module.exports = function({ addComponents, theme }) {
 			'padding': padding['3'] + ' ' + padding['4'],
 			'width': width['full'],
 			'&::placeholder': {
-				'color': colors['gray']['500'],
+				'color': colors['gray']['500']
 			},
 			'&:disabled': {
 				'color': colors['gray']['500'],
@@ -43,6 +43,19 @@ module.exports = function({ addComponents, theme }) {
 				}
 			}
 		},
+		'.dark .input': {
+			'backgroundColor': colors['gray']['900'],
+			'color': colors['white'],
+			'&:focus': {
+				'outlineColor': colors['gray']['700']
+			},
+			'&.error': {
+				'&:focus': {
+					'backgroundColor': colors['gray']['800'],
+					'color': colors['white']
+				}
+			}
+		},
 		'.input-arrow': {
 			'alignItems': 'center',
 			'bottom': '0',
@@ -54,6 +67,9 @@ module.exports = function({ addComponents, theme }) {
 			'position': 'absolute',
 			'right': '0',
 			'top': '0'
+		},
+		'.dark .input-arrow': {
+			'color': colors['white']
 		}
 	});
 };
