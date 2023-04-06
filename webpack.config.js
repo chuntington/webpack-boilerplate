@@ -59,7 +59,14 @@ module.exports = {
 		minimize: !DevMode,
 		minimizer: [
 			new TerserPlugin({
+				minify: TerserPlugin.swcMinify,
 				parallel: true,
+				terserOptions: {
+					compress: {
+						unused: true
+					},
+					mangle: true
+				},
 				test: /\.js(\?.*)?$/i
 			})
 		],
