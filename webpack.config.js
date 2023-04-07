@@ -2,7 +2,6 @@ require('dotenv').config();
 
 const Path = require('path');
 
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -81,14 +80,12 @@ module.exports = {
 		}
 	},
 	output: {
+		clean: true,
 		chunkFilename: (DevMode) ? '[name].js' : '[name].[fullhash].js',
 		filename: (DevMode) ? '[name].js' : '[name].[fullhash].js',
 		path: Path.resolve(__dirname, 'dist')
 	},
 	plugins: [
-		new CleanWebpackPlugin({
-			cleanOnceBeforeBuildPatterns: ['**/*']
-		}),
 		new ESLintWebpackPlugin({
 			overrideConfigFile: './eslint.config.js'
 		}),
