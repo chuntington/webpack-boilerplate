@@ -55,6 +55,12 @@ If you need a local web server, the following will start one and build on save:
 
 The generated bundle will be placed inside the `/dist` directory.
 
+If you need to update the [Google Fonts source list](https://github.com/jonathantneal/google-fonts-complete), provide a valid API key to the following script:
+
+```shell
+> npm run google-fonts --apikey=YOUR_API_KEY
+```
+
 ## Installing a framework
 
 *Note: When using styled components, the extracted CSS is likely to be invalid according to the preset StyleLint rules. You may modify these rules in `stylelint.config.js` to accommodate, or disable linting completely in `postcss.config.js`. In addition, it may be helpful to modify or temporarily disable some JavaScript linting rules in `eslint.config.js` when utilizing any of the below frameworks.*

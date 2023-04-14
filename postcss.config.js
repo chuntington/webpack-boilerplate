@@ -9,8 +9,6 @@ const StyleLint = require('stylelint');
 const Tailwindcss = require('tailwindcss');
 const TailwindcssNesting = require('tailwindcss/nesting');
 
-const GoogleFonts = require('./google-fonts.json');
-
 const DevMode = process.env.NODE_ENV === 'development';
 
 module.exports = {
@@ -39,9 +37,7 @@ module.exports = {
 		}),
 		FontMagician({
 			display: 'swap',
-			custom: {
-				...GoogleFonts
-			}
+			foundries: ['google']
 		}),
 		(!DevMode)
 			? Purgecss({
