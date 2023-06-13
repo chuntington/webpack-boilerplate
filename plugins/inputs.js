@@ -56,6 +56,13 @@ module.exports = function({ addComponents, theme }) {
 				}
 			}
 		},
+		'.input-sm': {
+			'fontSize': fontSize['sm'],
+			'padding': padding['2'] + ' ' + padding['3']
+		},
+		'select.input': {
+			'appearance': 'none'
+		},
 		'.input-arrow': {
 			'alignItems': 'center',
 			'bottom': '0',
@@ -70,6 +77,6 @@ module.exports = function({ addComponents, theme }) {
 		},
 		'.dark .input-arrow': {
 			'color': colors['white']
-		}
+		},
 	});
 };
