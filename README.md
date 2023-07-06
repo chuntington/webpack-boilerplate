@@ -8,12 +8,11 @@ For the **beehive**:
 
 - [PostCSS](https://github.com/postcss/postcss) *(Transforming styles)*
 - [TailwindCSS](https://github.com/tailwindlabs/tailwindcss) *(Utility framework)*
-- [Autoprefixer](https://github.com/postcss/autoprefixer) *(Prefixing for target browsers)*
+- [LightningCSS](https://github.com/parcel-bundler/lightningcss) *(Transpiling and minifying)*
 - [Import](https://github.com/postcss/postcss-import) *(Inlining @import rules)*
 - [FontMagician](https://github.com/csstools/postcss-font-magician) *(Generating @font-face rules)*
 - [AdvancedVariables](https://github.com/csstools/postcss-advanced-variables) *(Variables, conditionals and loops)*
 - [EasingGradients](https://github.com/larsenwork/postcss-easing-gradients) *(Generating eased gradients)*
-- [CSSNano](https://github.com/cssnano/cssnano) *(Compressing and minifying)*
 - [PurgeCSS](https://github.com/FullHuman/purgecss/tree/main/packages/postcss-purgecss) *(Removing unused styles)*
 - [StyleLint](https://github.com/stylelint/stylelint) *(Keeping things in order)*
 

@@ -2,9 +2,12 @@ require('dotenv').config();
 
 const Path = require('path');
 
+const Browserslist = require('browserslist');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const LightningCss = require('lightningcss');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
@@ -67,6 +70,12 @@ module.exports = {
 					mangle: true
 				},
 				test: /\.js(\?.*)?$/i
+			}),
+			new CssMinimizerPlugin({
+				minify: CssMinimizerPlugin.lightningCssMinify,
+				minimizerOptions: {
+					targets: LightningCss.browserslistToTargets(Browserslist('> 1%, last 2 versions'))
+				}
 			})
 		],
 		splitChunks: {

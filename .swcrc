@@ -1,4 +1,7 @@
 {
+	"env": {
+		"targets": "> 1%, last 2 versions"
+	},
 	"$schema": "https://json.schemastore.org/swcrc",
 	"jsc": {
 		"parser": {
