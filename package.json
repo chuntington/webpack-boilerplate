@@ -1,6 +1,6 @@
 {
 	"name": "webpack-boilerplate",
-	"version": "0.12.5",
+	"version": "0.12.6",
 	"author": "Cameron Huntington",
 	"description": "Starter Webpack (5) boilerplate for generating single page applications.",
 	"keywords": [

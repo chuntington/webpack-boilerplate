@@ -24,6 +24,10 @@ module.exports = function({ addComponents, theme }) {
 			'marginRight': `-${margin['4']}`
 		},
 		[`@media(min-width: ${ screens['sm'] })`]: {
+			'.container': {
+				'paddingLeft': padding['6'],
+				'paddingRight': padding['6']
+			},
 			'.col': {
 				'paddingLeft': padding['6'],
 				'paddingRight': padding['6'],
@@ -34,6 +38,10 @@ module.exports = function({ addComponents, theme }) {
 			}
 		},
 		[`@media(min-width: ${ screens['lg'] })`]: {
+			'.container': {
+				'paddingLeft': padding['8'],
+				'paddingRight': padding['8']
+			},
 			'.col': {
 				'paddingLeft': padding['8'],
 				'paddingRight': padding['8'],
