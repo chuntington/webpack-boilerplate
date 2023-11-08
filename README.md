@@ -269,8 +269,8 @@ const vm = new Vue({ components: { ExampleComponent } });
 vm.$mount('#app');
 ```
 
-### SvelteJS (3.x)
-Below is an example of a [Svelte.js](https://github.com/sveltejs/svelte) (3.x) implementation with [support](https://github.com/sveltejs/svelte-loader) for `.svelte` templates.
+### SvelteJS (4.x)
+Below is an example of a [Svelte.js](https://github.com/sveltejs/svelte) (4.x) implementation with [support](https://github.com/sveltejs/svelte-loader) for `.svelte` templates.
 
 In the terminal:
 
@@ -287,7 +287,16 @@ module.exports = {
             {
                 test: /\.svelte$/,
                 use: {
-                    loader: 'svelte-loader'
+                    loader: 'svelte-loader',
+                    options: {
+                        // emitCss: true
+                    }
+                }
+            },
+            {
+                test: /node_modules\/svelte\/.*\.mjs$/,
+                resolve: {
+                    fullySpecified: false
                 }
             },
             // ...
@@ -295,8 +304,9 @@ module.exports = {
     },
     resolve: {
         alias: {
-            svelte: Path.resolve('node_modules', 'svelte')
+            svelte: Path.resolve('node_modules', 'svelte/src/runtime')
         },
+        conditionNames: ['svelte', 'browser', 'import'],
         extensions: ['.mjs', '.js', '.svelte'],
         mainFields: ['svelte', 'browser', 'module', 'main']
     }
