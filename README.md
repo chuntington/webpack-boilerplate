@@ -365,6 +365,41 @@ const app = new App({
 window.app = app;
 ```
 
+### htmx (1.x)
+Below is an example of a [htmx]() (1.x) implementation.
+
+In the terminal:
+
+```shell
+> npm install htmx.org
+```
+
+In `webpack.config.js`, assign the appropriate resolve configuration:
+
+```javascript
+module.exports = {
+    resolve: {
+        alias: {
+            htmx: 'htmx.org/dist/htmx.min.js'
+        }
+    }
+}
+```
+
+In `src/index.html`, declare an app container:
+
+```html
+<body hx-on="htmx:load: console.log('Example App mounted.')" class="antialiased">
+    <h1>Example App</h1>
+</body>
+```
+
+In `src/js/main.js`, import the framework:
+
+```javascript
+import 'htmx';
+```
+
 ### ReactJS (18.x)
 Below is an example of a [React.js](https://github.com/facebook/react) (18.x) implementation.
 
