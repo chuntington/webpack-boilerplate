@@ -366,7 +366,7 @@ window.app = app;
 ```
 
 ### htmx (1.x)
-Below is an example of a [htmx]() (1.x) implementation.
+Below is an example of a [htmx](https://github.com/bigskysoftware/htmx) (1.x) implementation.
 
 In the terminal:
 
