@@ -14,7 +14,9 @@
 		"stylelint",
 		"nodejs",
 		"javascript",
-		"lightningcss"
+		"lightningcss",
+		"purgecss",
+		"spa"
 	],
 	"license": "MIT",
 	"repository": {
