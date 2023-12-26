@@ -19,7 +19,7 @@ module.exports = function({ addComponents, theme }) {
 			},
 			'.card-body-sm': {
 				'padding': padding['4']
-			},
+			}
 		},
 		[`@media(min-width: ${ screens['lg'] })`]: {
 			'.card-body': {
@@ -27,7 +27,7 @@ module.exports = function({ addComponents, theme }) {
 			},
 			'.card-body-sm': {
 				'padding': padding['6']
-			},
+			}
 		}
 	});
 };
