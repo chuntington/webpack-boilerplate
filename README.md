@@ -2,7 +2,7 @@
 
 ![GitHub](https://img.shields.io/github/license/chuntington/webpack-boilerplate) ![GitHub package.json version](https://img.shields.io/github/package-json/v/chuntington/webpack-boilerplate) ![GitHub code size](https://img.shields.io/github/languages/code-size/chuntington/webpack-boilerplate) ![GitHub last commit](https://img.shields.io/github/last-commit/chuntington/webpack-boilerplate)
 
-A starter [Webpack](https://github.com/webpack/webpack) boilerplate for generating single page applications (SPAs). This project utilizes [dot-env](https://github.com/motdotla/dotenv) and [cross-env](https://github.com/kentcdodds/cross-env) to store and communicate any information prescribed to the build environment.
+A starter [Webpack](https://github.com/webpack/webpack) boilerplate for generating single page applications (SPAs). [Node.js](https://github.com/nodejs/node) v18+ is required. This project utilizes [dot-env](https://github.com/motdotla/dotenv) and [cross-env](https://github.com/kentcdodds/cross-env) to store and communicate any information prescribed to the build environment.
 
 For the **beekeepers**:
 
