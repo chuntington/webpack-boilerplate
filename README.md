@@ -73,10 +73,11 @@ In the terminal:
 > npm install vue vue-loader vue-eslint-parser
 ```
 
-In `webpack.config.js`, import and assign the appropriate loader, plugin and alias:
+In `webpack.config.js`, import and assign the appropriate loader, plugins and alias:
 
 ```javascript
 const { VueLoaderPlugin } = require('vue-loader');
+const Webpack = require('webpack');
 
 module.exports = {
     module: {
@@ -89,6 +90,12 @@ module.exports = {
         ]
     },
     plugins: [
+        // Set compile-time flags when using the esm-bundler
+        new Webpack.DefinePlugin({
+            __VUE_OPTIONS_API__: true,
+            __VUE_PROD_DEVTOOLS__: DevMode,
+            __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: DevMode
+        }),
         new VueLoaderPlugin(),
         // ...
     ],
