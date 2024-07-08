@@ -1,6 +1,6 @@
 {
 	"name": "webpack-boilerplate",
-	"version": "0.14.3",
+	"version": "0.14.4",
 	"author": "Cameron Huntington",
 	"description": "Starter Webpack (5) boilerplate for generating single page applications.",
 	"keywords": [
@@ -33,7 +33,7 @@
 	},
 	"devDependencies": {
 		"@fullhuman/postcss-purgecss": "^6.0.0",
-		"@swc/core": "^1.5.29",
+		"@swc/core": "^1.6.13",
 		"browserslist": "^4.23.1",
 		"compression-webpack-plugin": "^11.1.0",
 		"cross-env": "^7.0.3",
@@ -45,7 +45,7 @@
 		"html-webpack-plugin": "^5.6.0",
 		"lightningcss": "^1.25.1",
 		"mini-css-extract-plugin": "^2.9.0",
-		"postcss": "^8.4.38",
+		"postcss": "^8.4.39",
 		"postcss-advanced-variables": "^3.0.1",
 		"postcss-easing-gradients": "^3.0.1",
 		"postcss-font-magician": "^4.0.0",
@@ -56,7 +56,7 @@
 		"swc-loader": "^0.2.6",
 		"tailwindcss": "^3.4.4",
 		"terser-webpack-plugin": "^5.3.10",
-		"webpack": "^5.92.0",
+		"webpack": "^5.92.1",
 		"webpack-cli": "^5.1.4",
 		"webpack-dev-server": "^5.0.4"
 	},
